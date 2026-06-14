@@ -23,6 +23,7 @@
       nixpkgs,
       cardwire,
       home-manager,
+      stylix,
       ...
     }:
     {
@@ -35,7 +36,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.rushabhp = ./hosts/laptop/home/home.nix;
+            home-manager.users.rushabhp = stylix.nixOnDroidModules.stylix ./hosts/laptop/home/home.nix;
           }
         ];
       };
