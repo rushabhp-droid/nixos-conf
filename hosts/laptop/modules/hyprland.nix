@@ -30,6 +30,10 @@
     wleave # Logout Screen
     gnome-disk-utility # Disk Manager
 
+    # Screenshot Utility
+    grim
+    slurp
+
     hyprpolkitagent # Polkit Agent
     hypridle
     hyprlock
