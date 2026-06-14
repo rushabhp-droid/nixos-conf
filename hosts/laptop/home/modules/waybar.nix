@@ -12,8 +12,22 @@
       mainBar = {
         layer = "top";
         position = "top";
-        # We only use the center module to create the floating island effect
-        modules-center = [ "hyprland/workspaces" "battery" ];
+
+        modules-left = [
+          "hyprland/window"
+        ];
+
+        modules-center = [
+          "hyprland/workspaces"
+          "battery"
+        ];
+        modules-right = [
+          "network"
+          "cpu"
+          "temperature"
+          "pulseaudio"
+          "backlight"
+        ];
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -24,12 +38,72 @@
         "battery" = {
           # Using Nerd Font icons for the battery indicator
           format = "{icon}";
-          format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-charging = "";
+          format-plugged = "";
+          format-icons = [
+            "󰂎"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
           states = {
             warning = 30;
             critical = 15;
           };
         };
+
+        "network" = {
+          "format-wifi" = "  {signalStrength}%";
+          "format-ethernet" = "󰈀  {ipaddr}";
+          "format-disconnected" = "󰖪";
+          "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
+        };
+
+        "cpu" = {
+          "format" = "  {usage}%";
+          "tooltip" = false;
+        };
+
+        "temperature" = {
+          "critical-threshold" = 80;
+          "format" = "{icon} {temperatureC}°C";
+          "hwmon-path" = "/sys/class/hwmon/hwmon6/temp1_input";
+          "format-icons" = [
+            ""
+            ""
+            ""
+          ];
+        };
+
+        "pulseaudio" = {
+          "format" = "{icon}  {volume}%";
+          "on-click" = "hyprpwcenter";
+          "format-muted" = "";
+          "format-icons" = {
+            "default" = [
+              ""
+              ""
+              ""
+            ];
+          };
+        };
+
+        "backlight" = {
+          "format" = "{icon} {percent}%";
+          "format-icons" = [
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
+        };
+
       };
     };
 
@@ -49,7 +123,12 @@
         background-color: transparent;
       }
 
+      .modules-right {
+        margin-right: 10px;
+      }
+
       /* Style the center container to look like the pill */
+      .modules-right
       .modules-center {
         /* Use your Stylix background color (base00) and append 'CC' for 80% opacity */
         background-color: alpha(#${config.lib.stylix.colors.base00}, 0.8);
@@ -95,6 +174,14 @@
       /* Change battery icon to red when critical */
       #battery.critical {
         color: #${config.lib.stylix.colors.base08};
+      }
+
+      #network,
+      #cpu,
+      #temperature,
+      #pulseaudio,
+      #backlight {
+        margin: 0 8px; /* Adds 8px of space on the left and right of each module */
       }
     '';
   };
