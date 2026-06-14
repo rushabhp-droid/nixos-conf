@@ -14,6 +14,10 @@
     configType = "lua";
 
     extraLuaFiles = {
+      "autostart" = {
+	content = ./raw/autostart.lua;
+	autoLoad = true;
+      }; 
       "general" = {
         content = ./raw/general.lua;
         autoLoad = true;
