@@ -17,7 +17,11 @@
       on = {
         _args = [
           "hyprland.start"
-          (lib.generators.mkLuaInline "function()\n hl.exec_cmd(\"sleep 0.5 && awww img ${config.stylix.image} --transition-type fade --transition-duration 2\")")
+          (lib.generators.mkLuaInline ''
+            function()
+              hl.exec_cmd('sh -c "sleep 0.5 && awww img ${config.stylix.image} --transition-type fade --transition-duration 2"')
+            end
+          '')
         ];
       };
     };
@@ -33,10 +37,6 @@
       };
       "binds" = {
         content = ./raw/hyprland/keybinds.lua;
-        autoLoad = true;
-      };
-      "colors" = {
-        content = ./raw/hyprland/colors.lua;
         autoLoad = true;
       };
       "animation" = {

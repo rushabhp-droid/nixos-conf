@@ -5,8 +5,5 @@
     extraPackages = with pkgs; [
       nil
     ];
-    settings = {
-      theme = "amberwood";
-    };
   };
 }

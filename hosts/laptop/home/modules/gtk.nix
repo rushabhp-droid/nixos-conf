@@ -10,21 +10,11 @@
 
   gtk = {
     enable = true;
-
-    theme = {
-      package = pkgs.whitesur-gtk-theme;
-      name = "WhiteSur-Dark";
-    };
-
     iconTheme = {
       package = pkgs.whitesur-icon-theme;
       name = "WhiteSur-dark";
     };
 
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 13;
-    };
   };
 
 }

@@ -8,17 +8,29 @@
 {
   # 1. Import the Stylix Home Manager module
   imports = [
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeModules.stylix
   ];
 
   stylix = {
     enable = true;
 
-    # Stop Stylix from starting its own wallpaper daemon
-    targets.swaybg.enable = false;
-    targets.hyprpaper.enable = false;
-    image = ./raw/Wallpapers/wallhaven-ml283m.png;
+    targets.hyprland.enable = true;
+    
+    image = ./raw/Wallpapers/wallhaven-qrlwdq.png;
 
     polarity = "dark";
+
+    fonts = {
+      # Define your global monospace font
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+
+      # Optional: Set a specific font size for all terminals, including Alacritty
+      sizes = {
+        terminal = 12;
+      };
+    };
   };
 }
