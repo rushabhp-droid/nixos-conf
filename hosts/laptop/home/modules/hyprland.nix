@@ -15,27 +15,27 @@
 
     extraLuaFiles = {
       "autostart" = {
-	content = ./raw/autostart.lua;
+	content = ./raw/hyprland/autostart.lua;
 	autoLoad = true;
       }; 
       "general" = {
-        content = ./raw/general.lua;
+        content = ./raw/hyprland/general.lua;
         autoLoad = true;
       };
       "binds" = {
-        content = ./raw/keybinds.lua;
+        content = ./raw/hyprland/keybinds.lua;
         autoLoad = true;
       };
       "colors" = {
-        content = ./raw/colors.lua;
+        content = ./raw/hyprland/colors.lua;
         autoLoad = true;
       };
       "animation" = {
-        content = ./raw/animation.lua;
+        content = ./raw/hyprland/animation.lua;
         autoLoad = true;
       };
       "rules" = {
-        content = ./raw/rules.lua;
+        content = ./raw/hyprland/rules.lua;
         autoLoad = true;
       };
     };

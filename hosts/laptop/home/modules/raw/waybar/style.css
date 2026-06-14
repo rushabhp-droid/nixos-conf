@@ -1,0 +1,61 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 15px;
+    font-weight: 700; 
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* Apply the dark pill styling to both the center and left sections */
+.modules-center,
+.modules-left {
+    background-color: #0d0f12; 
+    border-radius: 24px;       
+    padding: 2px 18px;         
+}
+
+/* Optional: Add a slight gap if you add a right module later */
+.modules-left {
+    margin-right: 10px;
+}
+
+#workspaces button {
+    color: #5b6078;            
+    background: transparent;
+    padding: 0 10px;
+    box-shadow: none;
+    text-shadow: none;
+    transition: color 0.2s ease;
+}
+
+#workspaces button.active {
+    color: #ffffff;            
+}
+
+#workspaces button:hover {
+    background: transparent;
+    color: #cdd6f4;            
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* General styling for laptop hardware modules */
+#battery,
+#network,
+#cpu,
+#temperature,
+#pulseaudio,
+#backlight {
+    color: #ffffff;
+    padding: 0 8px;
+}
+
+/* Subtle accenting for critical states */
+#battery.warning,
+#temperature.critical {
+    color: #f38ba8; 
+}
