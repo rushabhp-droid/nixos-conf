@@ -5,5 +5,6 @@
     ./hyprland.nix
     ./fonts.nix
     ./steam.nix
+    ./auto-refresh.nix
   ];
 }
