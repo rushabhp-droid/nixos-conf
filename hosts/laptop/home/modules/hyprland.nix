@@ -13,11 +13,20 @@
 
     configType = "lua";
 
+    settings = {
+      on = {
+        _args = [
+          "hyprland.start"
+          (lib.generators.mkLuaInline "function()\n hl.exec_cmd(\"sleep 0.5 && awww img ${config.stylix.image} --transition-type fade --transition-duration 2\")")
+        ];
+      };
+    };
+
     extraLuaFiles = {
       "autostart" = {
-	content = ./raw/hyprland/autostart.lua;
-	autoLoad = true;
-      }; 
+        content = ./raw/hyprland/autostart.lua;
+        autoLoad = true;
+      };
       "general" = {
         content = ./raw/hyprland/general.lua;
         autoLoad = true;
