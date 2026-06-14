@@ -14,9 +14,6 @@ hl.window_rule({match = {class = "^()$", title = "^()$" },                   no_
 -- Disable blur for every window
 hl.window_rule({match = {class = ".*" }, no_blur = true })
 
--- Re-enable blur for Alacritty to maintain text readability with 0.95 opacity
-hl.window_rule({match = {class = "^([Aa]lacritty)$" }, blur = true })
-
 -- Floating Rules (Forces certain dialogs, file pickers, and apps to float)
 hl.window_rule({match = {title = "^(Open File)(.*)$" },                      center = true, float = true})
 hl.window_rule({match = {title = "^(Select a File)(.*)$" },                  center = true, float = true})
