@@ -29,7 +29,7 @@
 
       # Optional: Set a specific font size for all terminals, including Alacritty
       sizes = {
-        terminal = 12;
+        terminal = 14;
       };
     };
   };
