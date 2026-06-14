@@ -20,6 +20,7 @@
     waybar # Highly customizable status bar
     sherlock-launcher # Application launcher / menu
     awww # Animated wallpaper daemon for Wayland
+    brightnessctl # Backlight Control
     wl-clipboard # Command-line copy/paste utilities (essential for terminal life)
     alacritty # Fast, GPU-accelerated terminal emulator
     nautilus # The file manager itself
