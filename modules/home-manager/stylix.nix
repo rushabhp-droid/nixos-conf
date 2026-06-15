@@ -28,7 +28,7 @@
 
       cursor = {
         package = pkgs.whitesur-cursors;
-        name = "WhiteSur Cursors";
+        name = "WhiteSur-cursors";
         size = 24;
       };
 

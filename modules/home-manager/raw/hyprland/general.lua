@@ -25,7 +25,9 @@ hl.gesture({
 hl.env =
 	{
 		"XCURSOR_SIZE,24",
-		"XCURSOR_THEME,WhiteSur",
+		"XCURSOR_THEME,WhiteSur-cursors",
+		"HYPRCURSOR_SIZE,24",
+		"HYPRCURSOR_THEME,WhiteSur-cursors",
 	}, hl.config({
 		gestures = {
 			workspace_swipe_distance = 700,
@@ -42,11 +44,6 @@ hl.env =
 			gaps_workspaces = 50,
 
 			border_size = 2,
-
-			col = {
-				active_border = "rgba(0DB7D455)",
-				inactive_border = "rgba(31313600)",
-			},
 			resize_on_border = true,
 
 			no_focus_fallback = true,
