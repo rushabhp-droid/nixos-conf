@@ -26,6 +26,10 @@
     # Enable touchpad support
     services.libinput.enable = true;
 
+    # Keyring
+    services.gnome.gnome-keyring.enable = true;
+    security.pam.services.sddm.enableGnomeKeyring = true;
+
     # Desktop Environment Packages
     environment.systemPackages = [
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
