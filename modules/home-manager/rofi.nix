@@ -7,7 +7,7 @@
 
 let
   colors = config.lib.stylix.colors;
-  
+
   # Inject Stylix colors and wallpaper into a literal RASI string
   rasiConfig = ''
     * {
@@ -121,7 +121,7 @@ in
       package = pkgs.rofi;
       # Force font because Stylix target is disabled, so we manage font natively
       font = "JetBrainsMono Nerd Font 15.0";
-      
+
       # Tell Rofi to load the theme we wrote to ~/.config/rofi/theme.rasi
       theme = "theme";
 

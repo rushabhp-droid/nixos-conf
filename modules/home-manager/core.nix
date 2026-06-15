@@ -9,7 +9,7 @@
   options.sys.hm.core.enable = lib.mkEnableOption "core";
 
   config = lib.mkIf config.sys.hm.core.enable {
-   
+
     home.packages = with pkgs; [
       gh
       tokei
