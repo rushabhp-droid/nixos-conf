@@ -9,17 +9,19 @@
   home.packages = with pkgs; [
     gh
   ];
-  
+
   programs.git = {
     enable = true;
     settings = {
       user.name = "Rushabh Patil";
       user.email = "rushabhpatil3407@gmail.com";
+    };
+  };
 
-      extraConfig = {
-        init.defaultBranch = "main";
-        pull.rebase = false;
-      };
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "https";
     };
   };
 
