@@ -26,6 +26,11 @@
 
       polarity = "dark";
 
+      opacity = {
+        terminal = 0.85;
+        popups = 0.85;
+      };
+
       cursor = {
         package = pkgs.whitesur-cursors;
         name = "WhiteSur-cursors";

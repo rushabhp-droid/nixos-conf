@@ -14,6 +14,9 @@ hl.window_rule({ match = { class = "^()$", title = "^()$" }, no_blur = true })
 -- Disable blur for every window
 hl.window_rule({ match = { class = ".*" }, no_blur = true })
 
+-- Enable blur for terminal (override global no_blur)
+hl.window_rule({ match = { class = "^([Aa]lacritty)$" }, no_blur = false })
+
 -- Floating Rules (Forces certain dialogs, file pickers, and apps to float)
 hl.window_rule({ match = { title = "^(Open File)(.*)$" }, center = true, float = true })
 hl.window_rule({ match = { title = "^(Select a File)(.*)$" }, center = true, float = true })
