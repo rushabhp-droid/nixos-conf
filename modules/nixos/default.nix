@@ -10,5 +10,6 @@
     ./fonts.nix
     ./steam.nix
     ./auto-refresh.nix
+    ./sops.nix
   ];
 }

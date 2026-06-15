@@ -44,6 +44,11 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -57,6 +62,7 @@
       git-hooks,
       disko,
       antigravity-nix,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -103,6 +109,7 @@
             ./hosts/laptop/configuration.nix
 
             # Additional external modules
+            sops-nix.nixosModules.sops
             disko.nixosModules.disko
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
