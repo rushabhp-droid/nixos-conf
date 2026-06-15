@@ -71,10 +71,9 @@
   };
 
   security.sudo.extraConfig = ''
-  Defaults pwfeedback, insults
-'';
- 
- 
+    Defaults pwfeedback, insults
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
   users.users.rushabhp = {
@@ -98,7 +97,7 @@
     vim
     wget
     btop
-    
+
     # Desktop Applications
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

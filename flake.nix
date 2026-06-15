@@ -2,6 +2,7 @@
   inputs = {
     # This is pointing to an unstable release.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +22,7 @@
     inputs@{
       self,
       nixpkgs,
+      nix-cachyos-kernel,
       cardwire,
       home-manager,
       stylix,
@@ -30,6 +32,14 @@
       nixosConfigurations.twin = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs.overlays = [
+                nix-cachyos-kernel.overlays.pinned
+              ];
+            }
+          )
           ./hosts/laptop/configuration.nix
           stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager

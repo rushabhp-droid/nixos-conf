@@ -14,6 +14,9 @@
   stylix = {
     enable = true;
 
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    
+
     targets.hyprland.enable = true;
     
     image = ./raw/Wallpapers/wallhaven-9orq98.jpg;
