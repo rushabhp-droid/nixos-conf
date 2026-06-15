@@ -10,6 +10,5 @@
     ./waybar.nix
     ./alacritty.nix
     ./sherlock.nix
-    ./zen.nix
   ];
 }
