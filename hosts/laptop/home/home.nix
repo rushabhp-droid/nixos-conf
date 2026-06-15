@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  imports = [ ../../../../modules/home-manager ];
+  imports = [ ../../../modules/home-manager ];
 
   home.username = "rushabhp";
   home.homeDirectory = "/home/rushabhp";
