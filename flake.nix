@@ -34,6 +34,11 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -45,6 +50,7 @@
       stylix,
       treefmt-nix,
       git-hooks,
+      disko,
       ...
     }@inputs:
     let
@@ -91,6 +97,7 @@
             ./hosts/laptop/configuration.nix
 
             # Additional external modules
+            disko.nixosModules.disko
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
 
