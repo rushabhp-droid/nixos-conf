@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -32,6 +33,10 @@
     };
 
     # Nix settings
+    nixpkgs.overlays = [
+      inputs.antigravity-nix.overlays.default
+
+    ];
     nixpkgs.config.allowUnfree = true;
     nix.settings = {
       substituters = [ "https://attic.xuyh0120.win/lantian" ];
@@ -48,6 +53,9 @@
       vim
       wget
       btop
+
+      # Desktop Packages
+      google-antigravity-ide
     ];
 
     # SSH

@@ -39,6 +39,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -51,6 +56,7 @@
       treefmt-nix,
       git-hooks,
       disko,
+      antigravity-nix,
       ...
     }@inputs:
     let
