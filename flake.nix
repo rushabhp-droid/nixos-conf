@@ -24,6 +24,16 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -33,12 +43,44 @@
       nix-cachyos-kernel,
       home-manager,
       stylix,
+      treefmt-nix,
+      git-hooks,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+
+      # Evaluate treefmt
+      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+
+      # Evaluate pre-commit hooks
+      preCommitCheck = git-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          treefmt = {
+            enable = true;
+            package = treefmtEval.config.build.wrapper;
+          };
+        };
+      };
     in
     {
+      # Expose formatter for `nix fmt`
+      formatter.${system} = treefmtEval.config.build.wrapper;
+
+      # Expose checks for `nix flake check`
+      checks.${system} = {
+        formatting = treefmtEval.config.build.check self;
+        pre-commit-check = preCommitCheck;
+      };
+
+      # Expose dev shell for `nix develop`
+      devShells.${system}.default = pkgs.mkShell {
+        inherit (preCommitCheck) shellHook;
+        buildInputs = [ ];
+      };
+
       nixosConfigurations = {
         twin = nixpkgs.lib.nixosSystem {
           inherit system;
