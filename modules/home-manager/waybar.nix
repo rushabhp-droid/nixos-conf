@@ -27,6 +27,7 @@
           "temperature"
           "pulseaudio"
           "backlight"
+          "clock"
         ];
 
         "hyprland/workspaces" = {
@@ -180,7 +181,8 @@
       #cpu,
       #temperature,
       #pulseaudio,
-      #backlight {
+      #backlight,
+      #clock {
         margin: 0 8px; /* Adds 8px of space on the left and right of each module */
       }
     '';

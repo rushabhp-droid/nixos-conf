@@ -23,6 +23,13 @@
 
     polarity = "dark";
 
+
+    cursor = {
+      package = pkgs.whitesur-cursors;
+      name = "WhiteSur Cursors";
+      size = 24;
+    };
+
     fonts = {
       # Define your global monospace font
       monospace = {

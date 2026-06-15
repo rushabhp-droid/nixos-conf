@@ -37,6 +37,10 @@ hl.gesture({
 })
 
 hl.config({
+    env = {
+        "XCURSOR_SIZE,24",
+        "XCURSOR_THEME,WhiteSur"
+    },
     gestures = {
         workspace_swipe_distance = 700,
         workspace_swipe_cancel_ratio = 0.2,

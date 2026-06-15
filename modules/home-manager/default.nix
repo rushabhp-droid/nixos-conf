@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./core.nix
     ./helix.nix
     ./gtk.nix
     ./stylix.nix
