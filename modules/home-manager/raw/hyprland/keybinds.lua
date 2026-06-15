@@ -8,7 +8,7 @@
 -- Default Applications
 local terminal = "alacritty"
 local fileManager = "nautilus"
-local menu = "sherlock"
+local menu = "rofi -show drun"
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 

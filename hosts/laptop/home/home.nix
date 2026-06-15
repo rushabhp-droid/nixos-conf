@@ -15,5 +15,5 @@
   sys.hm.hyprland.enable = true;
   sys.hm.waybar.enable = true;
   sys.hm.alacritty.enable = true;
-  sys.hm.sherlock.enable = true;
+  sys.hm.rofi.enable = true;
 }

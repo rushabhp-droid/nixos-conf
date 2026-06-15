@@ -21,7 +21,7 @@
 
     environment.systemPackages = with pkgs; [
       waybar # Highly customizable status bar
-      sherlock-launcher # Application launcher / menu
+      rofi-wayland # Application launcher / menu
       awww # Animated wallpaper daemon for Wayland
       brightnessctl # Backlight Control
       wl-clipboard # Command-line copy/paste utilities (essential for terminal life)

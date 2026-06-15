@@ -10,6 +10,6 @@
     ./hyprland.nix
     ./waybar.nix
     ./alacritty.nix
-    ./sherlock.nix
+    ./rofi.nix
   ];
 }
