@@ -1,190 +1,198 @@
-{ config, pkgs, ... }:
-
 {
-  # 1. Stop Stylix from forcing its default full-width layout
-  stylix.targets.waybar.enable = false;
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  options.sys.hm.waybar.enable = lib.mkEnableOption "waybar";
 
-  programs.waybar = {
-    enable = true;
+  config = lib.mkIf config.sys.hm.waybar.enable {
+    # 1. Stop Stylix from forcing its default full-width layout
+    stylix.targets.waybar.enable = false;
 
-    # 2. Define the Layout (The "Pill")
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
+    programs.waybar = {
+      enable = true;
 
-        modules-left = [
-          "hyprland/window"
-        ];
+      # 2. Define the Layout (The "Pill")
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
 
-        modules-center = [
-          "hyprland/workspaces"
-          "battery"
-        ];
-        modules-right = [
-          "network"
-          "cpu"
-          "temperature"
-          "pulseaudio"
-          "backlight"
-          "clock"
-        ];
-
-        "hyprland/workspaces" = {
-          format = "{name}";
-          disable-scroll = true;
-          all-outputs = true;
-        };
-
-        "battery" = {
-          # Using Nerd Font icons for the battery indicator
-          format = "{icon}";
-          format-charging = "";
-          format-plugged = "";
-          format-icons = [
-            "󰂎"
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
+          modules-left = [
+            "hyprland/window"
           ];
-          states = {
-            warning = 30;
-            critical = 15;
+
+          modules-center = [
+            "hyprland/workspaces"
+            "battery"
+          ];
+          modules-right = [
+            "network"
+            "cpu"
+            "temperature"
+            "pulseaudio"
+            "backlight"
+            "clock"
+          ];
+
+          "hyprland/workspaces" = {
+            format = "{name}";
+            disable-scroll = true;
+            all-outputs = true;
           };
-        };
 
-        "network" = {
-          "format-wifi" = "  {signalStrength}%";
-          "format-ethernet" = "󰈀  {ipaddr}";
-          "format-disconnected" = "󰖪";
-          "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
-        };
+          "battery" = {
+            # Using Nerd Font icons for the battery indicator
+            format = "{icon}";
+            format-charging = "";
+            format-plugged = "";
+            format-icons = [
+              "󰂎"
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
+            ];
+            states = {
+              warning = 30;
+              critical = 15;
+            };
+          };
 
-        "cpu" = {
-          "format" = "  {usage}%";
-          "tooltip" = false;
-        };
+          "network" = {
+            "format-wifi" = "  {signalStrength}%";
+            "format-ethernet" = "󰈀  {ipaddr}";
+            "format-disconnected" = "󰖪";
+            "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
+          };
 
-        "temperature" = {
-          "critical-threshold" = 80;
-          "format" = "{icon} {temperatureC}°C";
-          "hwmon-path" = "/sys/class/hwmon/hwmon6/temp1_input";
-          "format-icons" = [
-            ""
-            ""
-            ""
-          ];
-        };
+          "cpu" = {
+            "format" = "  {usage}%";
+            "tooltip" = false;
+          };
 
-        "pulseaudio" = {
-          "format" = "{icon}  {volume}%";
-          "on-click" = "hyprpwcenter";
-          "format-muted" = "";
-          "format-icons" = {
-            "default" = [
-              ""
-              ""
-              ""
+          "temperature" = {
+            "critical-threshold" = 80;
+            "format" = "{icon} {temperatureC}°C";
+            "hwmon-path" = "/sys/class/hwmon/hwmon6/temp1_input";
+            "format-icons" = [
+              ""
+              ""
+              ""
             ];
           };
-        };
 
-        "backlight" = {
-          "format" = "{icon} {percent}%";
-          "format-icons" = [
-            "󰃞"
-            "󰃟"
-            "󰃠"
-          ];
-        };
+          "pulseaudio" = {
+            "format" = "{icon}  {volume}%";
+            "on-click" = "hyprpwcenter";
+            "format-muted" = "";
+            "format-icons" = {
+              "default" = [
+                ""
+                ""
+                ""
+              ];
+            };
+          };
 
+          "backlight" = {
+            "format" = "{icon} {percent}%";
+            "format-icons" = [
+              "󰃞"
+              "󰃟"
+              "󰃠"
+            ];
+          };
+
+        };
       };
+
+      # 3. Inject Stylix Colors into Custom CSS
+      style = ''
+        * {
+          border: none;
+          border-radius: 0;
+          /* Automatically use your Stylix monospace font */
+          font-family: "${config.stylix.fonts.monospace.name}"; 
+          font-size: 15px;
+          font-weight: bold;
+        }
+
+        /* Make the actual Waybar window invisible */
+        window#waybar {
+          background-color: transparent;
+        }
+
+        .modules-right {
+          margin-right: 10px;
+        }
+
+        /* Style the center container to look like the pill */
+        .modules-right
+        .modules-center {
+          /* Use your Stylix background color (base00) and append 'CC' for 80% opacity */
+          background-color: alpha(#${config.lib.stylix.colors.base00}, 0.8);
+          border-radius: 30px;
+          padding: 4px 16px;
+          margin-top: 12px;
+          
+          /* Optional: Add a subtle shadow for depth */
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Workspace Buttons */
+        #workspaces button {
+          /* Inactive workspaces use the muted base03 color */
+          color: #${config.lib.stylix.colors.base03};
+          padding: 2px 8px;
+          margin: 0 4px;
+          border-radius: 15px;
+          transition: color 0.2s ease;
+        }
+
+        /* Active Workspace */
+        #workspaces button.active {
+          /* Active workspace uses your bright base05 text color */
+          color: #${config.lib.stylix.colors.base05};
+        }
+
+        #workspaces button:hover {
+          background: transparent;
+          box-shadow: none;
+          text-shadow: none;
+          /* Accent color on hover */
+          color: #${config.lib.stylix.colors.base0D}; 
+        }
+
+        /* Battery Icon */
+        #battery {
+          color: #${config.lib.stylix.colors.base05};
+          padding: 2px 8px;
+          margin-left: 8px;
+        }
+
+        /* Change battery icon to red when critical */
+        #battery.critical {
+          color: #${config.lib.stylix.colors.base08};
+        }
+
+        #network,
+        #cpu,
+        #temperature,
+        #pulseaudio,
+        #backlight,
+        #clock {
+          margin: 0 8px; /* Adds 8px of space on the left and right of each module */
+        }
+      '';
     };
-
-    # 3. Inject Stylix Colors into Custom CSS
-    style = ''
-      * {
-        border: none;
-        border-radius: 0;
-        /* Automatically use your Stylix monospace font */
-        font-family: "${config.stylix.fonts.monospace.name}"; 
-        font-size: 15px;
-        font-weight: bold;
-      }
-
-      /* Make the actual Waybar window invisible */
-      window#waybar {
-        background-color: transparent;
-      }
-
-      .modules-right {
-        margin-right: 10px;
-      }
-
-      /* Style the center container to look like the pill */
-      .modules-right
-      .modules-center {
-        /* Use your Stylix background color (base00) and append 'CC' for 80% opacity */
-        background-color: alpha(#${config.lib.stylix.colors.base00}, 0.8);
-        border-radius: 30px;
-        padding: 4px 16px;
-        margin-top: 12px;
-        
-        /* Optional: Add a subtle shadow for depth */
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      /* Workspace Buttons */
-      #workspaces button {
-        /* Inactive workspaces use the muted base03 color */
-        color: #${config.lib.stylix.colors.base03};
-        padding: 2px 8px;
-        margin: 0 4px;
-        border-radius: 15px;
-        transition: color 0.2s ease;
-      }
-
-      /* Active Workspace */
-      #workspaces button.active {
-        /* Active workspace uses your bright base05 text color */
-        color: #${config.lib.stylix.colors.base05};
-      }
-
-      #workspaces button:hover {
-        background: transparent;
-        box-shadow: none;
-        text-shadow: none;
-        /* Accent color on hover */
-        color: #${config.lib.stylix.colors.base0D}; 
-      }
-
-      /* Battery Icon */
-      #battery {
-        color: #${config.lib.stylix.colors.base05};
-        padding: 2px 8px;
-        margin-left: 8px;
-      }
-
-      /* Change battery icon to red when critical */
-      #battery.critical {
-        color: #${config.lib.stylix.colors.base08};
-      }
-
-      #network,
-      #cpu,
-      #temperature,
-      #pulseaudio,
-      #backlight,
-      #clock {
-        margin: 0 8px; /* Adds 8px of space on the left and right of each module */
-      }
-    '';
   };
 }

@@ -6,49 +6,53 @@
   ...
 }:
 {
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true; # Ensures compatibility for apps that don't natively support Wayland yet
-    withUWSM = true;
-  };
+  options.sys.hyprland.enable = lib.mkEnableOption "hyprland";
 
-  # Enable GVFS for Nautilus features (trash, mounting, etc.)
-  services.gvfs.enable = true;
-  programs.dconf.enable = true;
+  config = lib.mkIf config.sys.hyprland.enable {
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true; # Ensures compatibility for apps that don't natively support Wayland yet
+      withUWSM = true;
+    };
 
-  environment.systemPackages = with pkgs; [
-    waybar # Highly customizable status bar
-    sherlock-launcher # Application launcher / menu
-    awww # Animated wallpaper daemon for Wayland
-    brightnessctl # Backlight Control
-    wl-clipboard # Command-line copy/paste utilities (essential for terminal life)
-    alacritty # Fast, GPU-accelerated terminal emulator
-    nautilus # The file manager itself
-    xdg-user-dirs
-    sushi # GNOME's quick previewer (press Space on a file to view it)
-    file-roller # Archive manager (so you can extract .zip/.tar.gz inside Nautilus)
-    blueman # Bluetooth device manager
-    wleave # Logout Screen
-    gnome-disk-utility # Disk Manager
-    dunst # Notification
-    libnotify
+    # Enable GVFS for Nautilus features (trash, mounting, etc.)
+    services.gvfs.enable = true;
+    programs.dconf.enable = true;
 
-    # Screenshot Utility
-    grim
-    slurp
+    environment.systemPackages = with pkgs; [
+      waybar # Highly customizable status bar
+      sherlock-launcher # Application launcher / menu
+      awww # Animated wallpaper daemon for Wayland
+      brightnessctl # Backlight Control
+      wl-clipboard # Command-line copy/paste utilities (essential for terminal life)
+      alacritty # Fast, GPU-accelerated terminal emulator
+      nautilus # The file manager itself
+      xdg-user-dirs
+      sushi # GNOME's quick previewer (press Space on a file to view it)
+      file-roller # Archive manager (so you can extract .zip/.tar.gz inside Nautilus)
+      blueman # Bluetooth device manager
+      wleave # Logout Screen
+      gnome-disk-utility # Disk Manager
+      dunst # Notification
+      libnotify
 
-    hyprpolkitagent # Polkit Agent
-    hypridle
-    hyprlock
-    hyprpwcenter
+      # Screenshot Utility
+      grim
+      slurp
 
-  ];
+      hyprpolkitagent # Polkit Agent
+      hypridle
+      hyprlock
+      hyprpwcenter
 
-  services.blueman.enable = true;
+    ];
 
-  # Enable XDG Desktop Portals for screen sharing and flatpak compatibility
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    services.blueman.enable = true;
+
+    # Enable XDG Desktop Portals for screen sharing and flatpak compatibility
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
   };
 }
