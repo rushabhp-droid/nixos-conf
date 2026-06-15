@@ -5,7 +5,7 @@
     ./helix.nix
     ./gtk.nix
     ./stylix.nix
-    ./dunst.nix
+    ./swaync.nix
     ./zsh.nix
     ./hyprland.nix
     ./waybar.nix

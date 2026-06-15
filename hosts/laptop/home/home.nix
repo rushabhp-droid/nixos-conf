@@ -10,7 +10,7 @@
   sys.hm.helix.enable = true;
   sys.hm.gtk.enable = true;
   sys.hm.stylix.enable = true;
-  sys.hm.dunst.enable = true;
+  sys.hm.swaync.enable = true;
   sys.hm.zsh.enable = true;
   sys.hm.hyprland.enable = true;
   sys.hm.waybar.enable = true;
