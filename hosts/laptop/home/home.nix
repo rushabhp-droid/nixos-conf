@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     gh
     tokei
+    devenv
   ];
 
   programs.git = {
