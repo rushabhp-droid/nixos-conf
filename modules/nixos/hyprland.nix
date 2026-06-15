@@ -33,7 +33,6 @@
       blueman # Bluetooth device manager
       wleave # Logout Screen
       gnome-disk-utility # Disk Manager
-
       libnotify
 
       # Screenshot Utility
