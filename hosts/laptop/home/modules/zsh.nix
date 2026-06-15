@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     zsh-powerlevel10k
+    eza
   ];
 
   programs.zsh = {
@@ -17,6 +18,7 @@
       enable = true;
       plugins = [
         "git"
+        "eza"
         "sudo"
       ];
       theme="robbyrussell";
