@@ -16,7 +16,7 @@
 
     targets.hyprland.enable = true;
     
-    image = ./raw/Wallpapers/wallhaven-qrlwdq.png;
+    image = ./raw/Wallpapers/wallhaven-9orq98.jpg;
 
     polarity = "dark";
 
