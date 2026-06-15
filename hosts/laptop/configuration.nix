@@ -101,7 +101,7 @@
     btop
 
     # Desktop Applications
-    # inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Enable the OpenSSH daemon.
