@@ -8,8 +8,8 @@
   options.sys.hm.waybar.enable = lib.mkEnableOption "waybar";
 
   config = lib.mkIf config.sys.hm.waybar.enable {
-    # 1. Stop Stylix from forcing its default full-width layout
-    stylix.targets.waybar.enable = false;
+    # Allow Stylix to theme Waybar
+    stylix.targets.waybar.enable = true;
 
     programs.waybar = {
       enable = true;
