@@ -38,6 +38,10 @@
 
     ];
     nixpkgs.config.allowUnfree = true;
+
+    # Pin flake registry and nix-path to the system nixpkgs
+    nix.registry.nixpkgs.flake = inputs.nixpkgs;
+    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     nix.settings = {
       substituters = [ "https://attic.xuyh0120.win/lantian" ];
       trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
