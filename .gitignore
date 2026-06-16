@@ -1,2 +1,17 @@
-.luarc.json
+# Nix
 result
+result-*
+
+# Direnv
+.direnv/
+.envrc
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Lua
+.luarc.json
