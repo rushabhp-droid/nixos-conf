@@ -85,7 +85,6 @@ hl.config({
 		dim_special = 0.2,
 	},
 	misc = {
-		vfr = true, -- Variable frame rate (saves massive battery)
 		vrr = 1, -- Adaptive sync
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
