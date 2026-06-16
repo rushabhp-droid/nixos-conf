@@ -32,6 +32,8 @@
       blueman # Bluetooth device manager
       wleave # Logout Screen
       gnome-disk-utility # Disk Manager
+      loupe # image viewer
+      celluloid # Media Player
 
       # Screenshot Utility
       grim
