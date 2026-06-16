@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
       gh
       kdePackages.okular
+      qbittorrent
       tokei
       devenv
     ];
