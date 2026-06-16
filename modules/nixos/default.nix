@@ -1,15 +1,22 @@
 { ... }:
 {
   imports = [
-    ./core.nix
-    ./desktop.nix
-    ./users.nix
-    ./hardware-tweaks.nix
-    ./nvidia.nix
-    ./hyprland.nix
-    ./fonts.nix
-    ./steam.nix
-    ./auto-refresh.nix
-    ./sops.nix
+    # System & Core
+    ./system/core.nix
+    ./system/users.nix
+    ./system/sops.nix
+    ./system/auto-refresh.nix
+
+    # Desktop & GUI
+    ./desktop/desktop.nix
+    ./desktop/hyprland.nix
+    ./desktop/fonts.nix
+
+    # Hardware
+    ./hardware/hardware-tweaks.nix
+    ./hardware/nvidia.nix
+
+    # Applications
+    ./apps/steam.nix
   ];
 }

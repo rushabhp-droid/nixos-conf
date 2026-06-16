@@ -1,18 +1,23 @@
 { ... }:
 {
   imports = [
-    ./core.nix
-    ./helix.nix
-    ./gtk.nix
-    ./stylix.nix
-    ./swaync.nix
-    ./swayosd.nix
-    ./hyprland.nix
-    ./hyprlock.nix
-    ./hypridle.nix
-    ./waybar.nix
-    ./alacritty.nix
-    ./rofi.nix
-    ./zsh.nix
+    # System & Core
+    ./system/core.nix
+    ./system/gtk.nix
+    ./system/stylix.nix
+
+    # CLI & Terminal
+    ./cli/alacritty.nix
+    ./cli/helix.nix
+    ./cli/zsh.nix
+
+    # Desktop Environment
+    ./desktop/hyprland.nix
+    ./desktop/hyprlock.nix
+    ./desktop/hypridle.nix
+    ./desktop/rofi.nix
+    ./desktop/swaync.nix
+    ./desktop/swayosd.nix
+    ./desktop/waybar.nix
   ];
 }
