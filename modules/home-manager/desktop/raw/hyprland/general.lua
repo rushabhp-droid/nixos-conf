@@ -51,7 +51,7 @@ hl.config({
 	},
 	decoration = {
 		-- 2 = circle, higher = squircle, 4 = very obvious squircle
-		-- Fuck clearly visible squircles. 100% Apple brainrot.
+		-- Prefer subtle rounding over extreme squircles.
 		rounding_power = 2.5,
 		rounding = 18,
 
@@ -83,5 +83,19 @@ hl.config({
 		dim_inactive = true,
 		dim_strength = 0.05,
 		dim_special = 0.2,
+	},
+	misc = {
+		vfr = true, -- Variable frame rate (saves massive battery)
+		vrr = 1, -- Adaptive sync
+		disable_hyprland_logo = true,
+		disable_splash_rendering = true,
+		mouse_move_enables_dpms = true,
+		key_press_enables_dpms = true,
+	},
+	input = {
+		touchpad = {
+			natural_scroll = true,
+			tap_to_click = true,
+		},
 	},
 })
