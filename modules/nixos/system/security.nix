@@ -10,7 +10,7 @@
     # AppArmor
     security.apparmor = {
       enable = true;
-      killUnconfinedTcpWrappers = true;
+      killUnconfinedConfinables = true;
     };
 
     # Auditd
