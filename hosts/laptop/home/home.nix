@@ -17,4 +17,6 @@
   sys.hm.waybar.enable = true;
   sys.hm.alacritty.enable = true;
   sys.hm.rofi.enable = true;
+  sys.hm.hypridle.enable = true;
+  sys.hm.hyprlock.enable = true;
 }

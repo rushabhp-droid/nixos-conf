@@ -41,7 +41,6 @@
 
       hyprpolkitagent # Polkit Agent
       hyprpwcenter
-
     ];
 
     services.blueman.enable = true;
@@ -51,5 +50,7 @@
       enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
+
+    security.pam.services.hyprlock = { };
   };
 }
