@@ -29,7 +29,7 @@
     services.tlp = {
       enable = true;
       settings = {
-        RUNTIME_PM_DENYLIST = "01:00.0 01:00.1";
+        # RUNTIME_PM_DENYLIST = "01:00.0 01:00.1"; # Removed: This prevents the NVIDIA GPU (PCI:1:0:0) from sleeping (D3cold)!
 
         CPU_SCALING_GOVERNOR_ON_AC = "powersave";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
