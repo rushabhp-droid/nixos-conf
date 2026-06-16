@@ -25,4 +25,5 @@
   sys.steam.enable = true;
   sys.auto-refresh.enable = true;
   sys.sops.enable = true;
+  sys.security.enable = true;
 }

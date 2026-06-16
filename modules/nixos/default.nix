@@ -6,6 +6,7 @@
     ./system/users.nix
     ./system/sops.nix
     ./system/auto-refresh.nix
+    ./system/security.nix
 
     # Desktop & GUI
     ./desktop/desktop.nix
