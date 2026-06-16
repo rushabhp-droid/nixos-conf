@@ -19,4 +19,5 @@
   sys.hm.rofi.enable = true;
   sys.hm.hypridle.enable = true;
   sys.hm.hyprlock.enable = true;
+  sys.hm.wleave.enable = true;
 }

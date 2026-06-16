@@ -19,5 +19,6 @@
     ./desktop/swaync.nix
     ./desktop/swayosd.nix
     ./desktop/waybar.nix
+    ./desktop/wleave.nix
   ];
 }
