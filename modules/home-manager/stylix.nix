@@ -20,7 +20,19 @@
 
       base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
 
-      targets.hyprland.enable = true;
+      targets = {
+        # Enabled targets
+        alacritty.enable = true;
+        hyprland.enable = true;
+        waybar.enable = true;
+        helix.enable = true;
+        gtk.enable = true;
+        swaync.enable = true;
+        hyprlock.enable = true;
+
+        # Disabled targets (styled manually elsewhere)
+        rofi.enable = false;
+      };
 
       image = ./raw/Wallpapers/wallhaven-ml28wk.png;
 

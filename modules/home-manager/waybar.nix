@@ -8,9 +8,6 @@
   options.sys.hm.waybar.enable = lib.mkEnableOption "waybar";
 
   config = lib.mkIf config.sys.hm.waybar.enable {
-    # Allow Stylix to theme Waybar
-    stylix.targets.waybar.enable = true;
-
     programs.waybar = {
       enable = true;
 

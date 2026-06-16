@@ -39,8 +39,6 @@
       slurp
 
       hyprpolkitagent # Polkit Agent
-      hypridle
-      hyprlock
       hyprpwcenter
 
     ];

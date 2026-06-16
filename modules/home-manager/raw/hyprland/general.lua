@@ -22,13 +22,7 @@ hl.gesture({
 	action = "workspace",
 })
 
-hl.env =
-	{
-		"XCURSOR_SIZE,24",
-		"XCURSOR_THEME,WhiteSur-cursors",
-		"HYPRCURSOR_SIZE,24",
-		"HYPRCURSOR_THEME,WhiteSur-cursors",
-	}, hl.config({
+hl.config({
 		gestures = {
 			workspace_swipe_distance = 700,
 			workspace_swipe_cancel_ratio = 0.2,

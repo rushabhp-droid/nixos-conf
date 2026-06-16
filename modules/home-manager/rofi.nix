@@ -110,9 +110,6 @@ in
   options.sys.hm.rofi.enable = lib.mkEnableOption "rofi";
 
   config = lib.mkIf config.sys.hm.rofi.enable {
-    # 1. Disable Stylix's auto-generated Rofi layout
-    stylix.targets.rofi.enable = false;
-
     # 2. Write the custom RASI layout to the standard Rofi config directory
     xdg.configFile."rofi/theme.rasi".text = rasiConfig;
 
