@@ -34,7 +34,7 @@
         rofi.enable = false;
       };
 
-      image = ./raw/Wallpapers/wallhaven-ml28wk.png;
+      image = ../desktop/raw/Wallpapers/wallhaven-ml28wk.png;
 
       polarity = "dark";
 
