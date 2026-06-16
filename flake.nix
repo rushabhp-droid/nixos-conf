@@ -55,7 +55,6 @@
     {
       self,
       nixpkgs,
-      nix-cachyos-kernel,
       home-manager,
       stylix,
       treefmt-nix,
@@ -114,9 +113,7 @@
             home-manager.nixosModules.home-manager
 
             # System-wide overlays
-            (_: {
-              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
-            })
+            ./overlays
 
             # Home Manager global setup
             (_: {

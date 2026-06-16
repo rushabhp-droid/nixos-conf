@@ -33,10 +33,6 @@
     };
 
     # Nix settings
-    nixpkgs.overlays = [
-      inputs.antigravity-nix.overlays.default
-
-    ];
     nixpkgs.config.allowUnfree = true;
 
     # Pin flake registry and nix-path to the system nixpkgs
