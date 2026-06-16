@@ -61,7 +61,6 @@
       treefmt-nix,
       git-hooks,
       disko,
-      antigravity-nix,
       sops-nix,
       ...
     }@inputs:
@@ -115,12 +114,12 @@
             home-manager.nixosModules.home-manager
 
             # System-wide overlays
-            ({ pkgs, ... }: {
+            (_: {
               nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
             })
 
             # Home Manager global setup
-            ({ config, ... }: {
+            (_: {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;

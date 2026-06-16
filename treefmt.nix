@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+_: {
   projectRootFile = "flake.nix";
 
   # Format Nix files
@@ -6,4 +6,8 @@
 
   # Format Lua files
   programs.stylua.enable = true;
+
+  # Nix Linters
+  programs.statix.enable = true;
+  programs.deadnix.enable = true;
 }
