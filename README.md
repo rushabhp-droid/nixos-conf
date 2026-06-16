@@ -39,13 +39,13 @@ The repository is modularly organized to separate system-wide behavior from user
 
 ### Rebuilding the System
 
-To apply the configuration to the host, run the following command from the root of this repository:
+This system uses `nh` (Nix Helper) for building and deploying configurations. To apply the configuration, simply run:
 
 ```bash
-sudo nixos-rebuild switch --flake .#twin
+nh os switch
 ```
 
-*Note: For testing changes without applying them to the bootloader, use `test` or `build` instead of `switch`.*
+*Note: For testing changes without applying them to the bootloader, use `nh os build` instead of `switch`.*
 
 ### Code Formatting & Linting
 
@@ -66,4 +66,4 @@ Secrets are managed via `sops-nix` and `age`. For detailed instructions on how t
 ## ⚙️ Maintenance 
 
 - **Updating inputs:** `nix flake update`
-- **Garbage Collection:** `nix-collect-garbage -d` (Use with `sudo` to clean system profiles)
+- **Garbage Collection:** `nh clean all` (Automatically runs weekly, keeping 3 generations within the last 7 days)
