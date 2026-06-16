@@ -19,5 +19,6 @@
 
     # Applications
     ./apps/steam.nix
+    ./apps/gaming.nix
   ];
 }

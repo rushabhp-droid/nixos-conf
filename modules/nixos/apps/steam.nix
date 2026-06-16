@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -16,13 +15,5 @@
       # Enables Valve's Gamescope compositor utility for sandboxed resolution control
       gamescopeSession.enable = true;
     };
-
-    # Gaming-specific environment packages bundled directly with this module
-    environment.systemPackages = with pkgs; [
-      mangohud # Hardware/FPS overlay performance tracker
-      protonup-qt # GUI engine to install and manage custom GE-Proton layers
-    ];
-
-    programs.gamemode.enable = true; # Optimizes CPU/GPU mapping on launch
   };
 }

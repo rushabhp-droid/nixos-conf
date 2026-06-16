@@ -19,6 +19,7 @@
   sys.hyprland.enable = true;
   sys.fonts.enable = true;
   sys.steam.enable = true;
+  sys.gaming.enable = true;
   sys.auto-refresh.enable = true;
   sys.sops.enable = true;
   sys.security.enable = true;
