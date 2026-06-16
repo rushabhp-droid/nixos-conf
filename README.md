@@ -13,6 +13,8 @@ This repository manages the system configuration, packages, and dotfiles for my 
 - **Global Theming**: [Stylix](https://github.com/danth/stylix) applies a unified `Base16Kvantum` theme (and fonts like JetBrainsMono) across the *entire* OS automatically.
 - **Secrets Management**: [sops-nix](https://github.com/Mic92/sops-nix) handles sensitive data (passwords, tokens) using age encryption.
 - **Power Management**: Auto-tuned specifically for modern Intel/NVIDIA hybrid setups (PRIME, `finegrained` D3 state, `intel_pstate` scaling).
+- **Security Hardened**: Built-in AppArmor profiles and `auditd` logging configured centrally.
+- **Code Quality**: Pre-commit hooks enforce strict formatting (`nixfmt`, `stylua`) and static analysis (`statix`, `deadnix`).
 
 ## 📂 Repository Structure
 
@@ -26,10 +28,11 @@ The repository is modularly organized to separate system-wide behavior from user
 │       └── home/
 │           └── home.nix       # Home Manager entry point for the user
 ├── modules/
-│   ├── nixos/                 # System-level modules (hardware, drivers, sops)
+│   ├── nixos/                 # System-level modules (hardware, drivers, sops, security)
 │   └── home-manager/          # User-level modules (Hyprland, Waybar, Rofi, Stylix)
+├── overlays/                  # Centralized Nixpkgs overlays (custom kernels, packages)
 ├── secrets.yaml               # Encrypted SOPS data
-└── treefmt.nix                # Unified formatting configuration
+└── treefmt.nix                # Unified formatting and linting configuration
 ```
 
 ## 🚀 Installation & Usage
@@ -44,13 +47,17 @@ sudo nixos-rebuild switch --flake .#twin
 
 *Note: For testing changes without applying them to the bootloader, use `test` or `build` instead of `switch`.*
 
-### Code Formatting
+### Code Formatting & Linting
 
-This repository enforces a strict code style using `treefmt` (which wraps `nixfmt` for Nix files and `stylua` for Lua files). You can automatically format the entire repository by running:
+This repository enforces strict code quality using `treefmt` (which wraps `nixfmt` for Nix files, `stylua` for Lua files, `statix` for anti-patterns, and `deadnix` for unused variables). 
+
+You can automatically format and lint the entire repository by running:
 
 ```bash
 nix fmt
 ```
+
+A pre-commit hook is automatically provided via the flake's development shell. Simply run `nix develop` to install it into your local `.git/hooks/pre-commit`, ensuring all commits meet the repository's quality standards.
 
 ### Managing Secrets
 
