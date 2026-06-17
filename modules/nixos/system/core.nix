@@ -13,9 +13,11 @@ in
 
   config = lib.mkIf config.sys.core.enable {
     # Bootloader
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+    boot = {
+      loader.systemd-boot.enable = true;
+      loader.efi.canTouchEfiVariables = true;
+      kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+    };
 
     # ZRAM SWAP
     zramSwap = {
@@ -39,16 +41,18 @@ in
     nixpkgs.config.allowUnfree = true;
 
     # Pin flake registry and nix-path to the system nixpkgs
-    nix.registry.nixpkgs.flake = inputs.nixpkgs;
-    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    nix.settings = {
-      substituters = [ "https://attic.xuyh0120.win/lantian" ];
-      trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      auto-optimise-store = true;
+    nix = {
+      registry.nixpkgs.flake = inputs.nixpkgs;
+      nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      settings = {
+        substituters = [ "https://attic.xuyh0120.win/lantian" ];
+        trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+        auto-optimise-store = true;
+      };
     };
 
     programs.nh = {

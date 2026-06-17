@@ -17,21 +17,23 @@
       devenv
     ];
 
-    programs.git = {
-      enable = true;
-      settings = {
-        user.name = "Rushabh Patil";
-        user.email = "rushabhpatil3407@gmail.com";
+    programs = {
+      git = {
+        enable = true;
+        settings = {
+          user.name = "Rushabh Patil";
+          user.email = "rushabhpatil3407@gmail.com";
+        };
       };
-    };
 
-    programs.gh = {
-      enable = true;
-      settings = {
-        git_protocol = "https";
+      gh = {
+        enable = true;
+        settings = {
+          git_protocol = "https";
+        };
       };
-    };
 
-    programs.home-manager.enable = true;
+      home-manager.enable = true;
+    };
   };
 }

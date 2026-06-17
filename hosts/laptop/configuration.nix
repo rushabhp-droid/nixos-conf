@@ -11,16 +11,18 @@
 
   networking.hostName = "twin";
 
-  sys.core.enable = true;
-  sys.desktop.enable = true;
-  sys.users.enable = true;
-  sys.hardware-tweaks.enable = true;
-  sys.nvidia.enable = true;
-  sys.hyprland.enable = true;
-  sys.fonts.enable = true;
-  sys.steam.enable = true;
-  sys.gaming.enable = true;
-  sys.auto-refresh.enable = true;
-  sys.sops.enable = true;
-  sys.security.enable = false;
+  sys = {
+    core.enable = true;
+    desktop.enable = true;
+    users.enable = true;
+    hardware-tweaks.enable = true;
+    nvidia.enable = true;
+    hyprland.enable = true;
+    fonts.enable = true;
+    steam.enable = true;
+    gaming.enable = true;
+    auto-refresh.enable = true;
+    sops.enable = true;
+    security.enable = false;
+  };
 }
