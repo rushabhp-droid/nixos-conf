@@ -23,5 +23,6 @@
     hypridle.enable = true;
     hyprlock.enable = true;
     wleave.enable = true;
+    vscodium.enable = true;
   };
 }
