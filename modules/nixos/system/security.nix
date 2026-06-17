@@ -14,7 +14,6 @@
     };
 
     # Auditd
-    security.auditd.enable = false;
-    boot.kernelParams = [ "audit=0" ];
+    security.auditd.enable = true;
   };
 }
