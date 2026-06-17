@@ -20,5 +20,6 @@
     ./desktop/swayosd.nix
     ./desktop/waybar.nix
     ./desktop/wleave.nix
+    ./desktop/vscodium.nix
   ];
 }

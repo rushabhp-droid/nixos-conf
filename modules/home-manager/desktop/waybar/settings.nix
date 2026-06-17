@@ -33,7 +33,7 @@
     };
 
     "battery" = {
-      format = "{icon}";
+      format = "{icon} : {capacity}%";
       format-charging = "";
       format-plugged = "";
       format-icons = [
