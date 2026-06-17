@@ -8,7 +8,7 @@
 lib.mkIf config.sys.hm.rofi.enable {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
     font = "JetBrainsMono Nerd Font 15.0";
 
     theme = "theme";
