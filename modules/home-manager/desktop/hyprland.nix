@@ -18,6 +18,14 @@
       configType = "lua";
 
       settings = {
+        env = [
+          {
+            _args = [
+              "AQ_DRM_DEVICES"
+              "/dev/dri/card1:/dev/dri/card0"
+            ];
+          }
+        ];
         on = import ./hyprland/autostart.nix { inherit config lib; };
         inherit ((import ./hyprland/general.nix { inherit lib; })) monitor;
         inherit ((import ./hyprland/general.nix { inherit lib; })) gesture;
