@@ -64,6 +64,7 @@ in
       vim
       wget
       btop
+      unrar
 
       # Desktop Packages
       google-antigravity-ide

@@ -13,7 +13,9 @@
       protonup-qt # GUI engine to install and manage custom GE-Proton layers
       lutris # Game manager
       heroic # Epic/GOG games launcher
-      bottles # Run Windows software/games
+      (bottles.override {
+        removeWarningPopup = true;
+      }) # Run Windows software/games
       prismlauncher # Minecraft Launcher
     ];
 
