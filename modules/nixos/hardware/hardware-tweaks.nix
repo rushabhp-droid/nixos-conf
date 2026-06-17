@@ -20,6 +20,9 @@
         settings = {
           # RUNTIME_PM_DENYLIST = "01:00.0 01:00.1"; # Removed: This prevents the NVIDIA GPU (PCI:1:0:0) from sleeping (D3cold)!
 
+          # Force the NVIDIA GPU and its Audio device to 'auto' so finegrained works on AC too
+          RUNTIME_PM_ENABLE = "01:00.0 01:00.1";
+
           CPU_SCALING_GOVERNOR_ON_AC = "performance";
           CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
