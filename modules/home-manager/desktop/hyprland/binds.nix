@@ -52,7 +52,7 @@
   {
     _args = [
       "SUPER + M"
-      (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit")'')
+      (lib.generators.mkLuaInline ''hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || uwsm stop")'')
     ];
   }
   {

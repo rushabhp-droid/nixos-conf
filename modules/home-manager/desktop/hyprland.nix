@@ -14,7 +14,7 @@
       enable = true;
       package = null;
       portalPackage = null;
-      systemd.variables = [ "--all" ];
+      systemd.enable = false;
       configType = "lua";
 
       settings = {
