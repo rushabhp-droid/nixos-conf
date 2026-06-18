@@ -7,6 +7,12 @@
   options.sys.hardware-tweaks.enable = lib.mkEnableOption "hardware-tweaks";
 
   config = lib.mkIf config.sys.hardware-tweaks.enable {
+
+    # MSI-EC Controller
+
+    # boot.extraModulePackages = [ config.boot.kernelPackages.msi-ec ];
+    # boot.kernelModules = [ "msi-ec" ];
+
     services = {
       # Firmware updates
       fwupd.enable = true;
