@@ -4,23 +4,14 @@
     programs.nixvim.plugins.obsidian = {
       enable = true;
       settings = {
-        dir = "~/Documents/Obsidian";
-        mappings = {
-          "gf" = {
-            action = "require('obsidian').util.gf_passthrough";
-            opts = {
-              noremap = false;
-              expr = true;
-              buffer = true;
-            };
-          };
-          "<leader>ch" = {
-            action = "require('obsidian').util.toggle_checkbox";
-            opts = {
-              buffer = true;
-            };
-          };
-        };
+        workspaces = [
+          {
+            name = "personal";
+            path = "~/Documents/Obsidian";
+          }
+        ];
+        legacy_commands = false;
+
         # Define how to create new notes
         note_id_func = ''
           function(title)
@@ -43,19 +34,19 @@
       {
         mode = "n";
         key = "<leader>on";
-        action = "<cmd>ObsidianNew<cr>";
+        action = "<cmd>Obsidian new<cr>";
         options.desc = "New obsidian note";
       }
       {
         mode = "n";
         key = "<leader>os";
-        action = "<cmd>ObsidianSearch<cr>";
+        action = "<cmd>Obsidian search<cr>";
         options.desc = "Search obsidian notes";
       }
       {
         mode = "n";
         key = "<leader>oq";
-        action = "<cmd>ObsidianQuickSwitch<cr>";
+        action = "<cmd>Obsidian quick_switch<cr>";
         options.desc = "Quick switch obsidian notes";
       }
     ];
