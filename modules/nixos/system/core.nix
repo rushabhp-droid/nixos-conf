@@ -45,8 +45,9 @@ in
       registry.nixpkgs.flake = inputs.nixpkgs;
       nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
       settings = {
-        substituters = [ "https://attic.xuyh0120.win/lantian" ];
-        trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+        substituters = [ "https://attic.xuyh0120.win/lantian" "https://hyprland.cachix.org" ];
+        trusted-substituters = [ "https://attic.xuyh0120.win/lantian" "https://hyprland.cachix.org" ];
+        trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
         experimental-features = [
           "nix-command"
           "flakes"
