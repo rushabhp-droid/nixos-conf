@@ -60,26 +60,16 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      stylix,
-      treefmt-nix,
-      git-hooks,
-      disko,
-      sops-nix,
-      ...
-    }@inputs:
+    inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import inputs.nixpkgs { inherit system; };
 
       # Evaluate treefmt
-      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
 
       # Evaluate pre-commit hooks
-      preCommitCheck = git-hooks.lib.${system}.run {
+      preCommitCheck = inputs.git-hooks.lib.${system}.run {
         src = ./.;
         hooks = {
           treefmt = {
@@ -95,7 +85,7 @@
 
       # Expose checks for `nix flake check`
       checks.${system} = {
-        formatting = treefmtEval.config.build.check self;
+        formatting = treefmtEval.config.build.check inputs.self;
         pre-commit-check = preCommitCheck;
       };
 
@@ -106,7 +96,7 @@
       };
 
       nixosConfigurations = {
-        twin = nixpkgs.lib.nixosSystem {
+        twin = inputs.nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
 
@@ -115,23 +105,23 @@
             ./hosts/laptop/configuration.nix
 
             # Additional external modules
-            sops-nix.nixosModules.sops
-            disko.nixosModules.disko
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
+            inputs.sops-nix.nixosModules.sops
+            inputs.disko.nixosModules.disko
+            inputs.stylix.nixosModules.stylix
+            inputs.home-manager.nixosModules.home-manager
 
             # System-wide overlays
             ./overlays
 
             # Home Manager global setup
-            (_: {
+            {
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
                 users.rushabhp = ./hosts/laptop/home/home.nix;
               };
-            })
+            }
           ];
         };
       };
