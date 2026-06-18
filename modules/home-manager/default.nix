@@ -10,6 +10,7 @@
     ./cli/alacritty.nix
     ./cli/helix.nix
     ./cli/zsh.nix
+    ./cli/nixvim
 
     # Desktop Environment
     ./desktop/hyprland.nix

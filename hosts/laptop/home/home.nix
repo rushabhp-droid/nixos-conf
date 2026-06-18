@@ -10,6 +10,7 @@
 
   sys.hm = {
     core.enable = true;
+    nixvim.enable = true;
     helix.enable = true;
     gtk.enable = true;
     stylix.enable = true;

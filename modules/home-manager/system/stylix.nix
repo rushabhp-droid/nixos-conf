@@ -26,6 +26,7 @@
         hyprland.enable = true;
         waybar.enable = true;
         helix.enable = true;
+        nixvim.enable = true;
         gtk.enable = true;
         swaync.enable = true;
         hyprlock.enable = true;

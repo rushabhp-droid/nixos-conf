@@ -21,7 +21,7 @@
       thermald.enable = true;
 
       # Power Profiles Daemon Management
-      power-power-profiles-daemon.enable = true;
+      power-profiles-daemon.enable = true;
     };
 
     # Bluetooth
