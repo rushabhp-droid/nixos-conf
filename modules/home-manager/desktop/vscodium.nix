@@ -12,8 +12,6 @@
       enable = true;
 
       profiles.default.extensions = with pkgs.vscode-extensions; [
-        # Themes
-        # dracula-theme.theme-dracula
       ];
     };
   };
