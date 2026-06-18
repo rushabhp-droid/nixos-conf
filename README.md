@@ -31,7 +31,8 @@ The repository is modularly organized to separate system-wide behavior from user
 │   ├── nixos/                 # System-level modules (hardware, drivers, sops, security)
 │   └── home-manager/          # User-level modules (Hyprland, Waybar, Rofi, Stylix)
 ├── overlays/                  # Centralized Nixpkgs overlays (custom kernels, packages)
-├── secrets.yaml               # Encrypted SOPS data
+├── modules/nixos/system/secrets/secrets.yaml # Encrypted SOPS data
+├── .sops.yaml                 # SOPS configuration file
 └── treefmt.nix                # Unified formatting and linting configuration
 ```
 
@@ -94,6 +95,7 @@ end
 subgraph group_ops["Operations"]
   node_tooling["Tooling<br/>fmt/hooks<br/>[treefmt.nix]"]
   node_secretfile["Secret store<br/>encrypted secrets<br/>[secrets.yaml]"]
+  node_sopsconfig["SOPS config<br/>sops settings<br/>[.sops.yaml]"]
 end
 
 node_flake -->|"builds host"| node_laptop
@@ -108,6 +110,7 @@ node_laptop -->|"uses"| node_users
 node_laptop -->|"uses"| node_security
 node_laptop -->|"secrets"| node_sops
 node_sops -.->|"reads"| node_secretfile
+node_sops -.->|"uses"| node_sopsconfig
 node_nixosmods -->|"includes"| node_desktopsys
 node_nixosmods -->|"includes"| node_fonts
 node_nixosmods -->|"includes"| node_hyprsys
@@ -146,6 +149,7 @@ click node_users "https://github.com/rushabhp-droid/nixos-conf/blob/next/modules
 click node_security "https://github.com/rushabhp-droid/nixos-conf/blob/next/modules/nixos/system/security.nix"
 click node_sops "https://github.com/rushabhp-droid/nixos-conf/blob/next/modules/nixos/system/sops.nix"
 click node_secretfile "https://github.com/rushabhp-droid/nixos-conf/blob/next/modules/nixos/system/secrets/secrets.yaml"
+click node_sopsconfig "https://github.com/rushabhp-droid/nixos-conf/blob/next/.sops.yaml"
 click node_hardwaretune "https://github.com/rushabhp-droid/nixos-conf/blob/next/modules/nixos/hardware/hardware-tweaks.nix"
 click node_nvidia "https://github.com/rushabhp-droid/nixos-conf/blob/next/modules/nixos/hardware/nvidia.nix"
 click node_desktopsys "https://github.com/rushabhp-droid/nixos-conf/blob/next/modules/nixos/desktop/desktop.nix"
@@ -177,7 +181,7 @@ classDef toneRose fill:#ffe4e6,stroke:#e11d48,stroke-width:1.5px,color:#881337
 classDef toneIndigo fill:#e0e7ff,stroke:#4f46e5,stroke-width:1.5px,color:#312e81
 classDef toneTeal fill:#ccfbf1,stroke:#0f766e,stroke-width:1.5px,color:#134e4a
 class node_flake,node_gtk,node_stylix toneBlue
-class node_laptop,node_disk,node_hardware,node_homeentry,node_tooling,node_secretfile toneAmber
+class node_laptop,node_disk,node_hardware,node_homeentry,node_tooling,node_secretfile,node_sopsconfig toneAmber
 class node_nixosmods,node_coreos,node_users,node_security,node_sops,node_hardwaretune,node_nvidia,node_desktopsys,node_fonts,node_hyprsys,node_apps,node_steam toneMint
 class node_homenix,node_corehome toneRose
 class node_desktophm,node_hyprland,node_waybar,node_rofi,node_hypridle,node_hyprlock,node_swaync toneIndigo
