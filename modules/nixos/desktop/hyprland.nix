@@ -34,6 +34,7 @@
       gnome-disk-utility # Disk Manager
       loupe # image viewer
       celluloid # Media Player
+      gnome-text-editor # GUI text editor
 
       # Screenshot Utility
       grim
