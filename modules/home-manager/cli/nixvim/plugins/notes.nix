@@ -5,10 +5,6 @@
       enable = true;
       settings = {
         dir = "~/Documents/Obsidian";
-        completion = {
-          nvim_cmp = true;
-          min_chars = 2;
-        };
         mappings = {
           "gf" = {
             action = "require('obsidian').util.gf_passthrough";

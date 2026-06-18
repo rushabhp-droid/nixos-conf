@@ -8,7 +8,7 @@
   options.sys.hm.nixvim.enable = lib.mkEnableOption "nixvim";
 
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./core/options.nix
     ./core/keymaps.nix
     ./plugins/telescope.nix
