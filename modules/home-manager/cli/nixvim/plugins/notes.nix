@@ -13,19 +13,21 @@
         legacy_commands = false;
 
         # Define how to create new notes
-        note_id_func = ''
-          function(title)
-            local suffix = ""
-            if title ~= nil then
-              suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-            else
-              for _ = 1, 4 do
-                suffix = suffix .. string.char(math.random(97, 122))
+        note_id_func = {
+          __raw = ''
+            function(title)
+              local suffix = ""
+              if title ~= nil then
+                suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+              else
+                for _ = 1, 4 do
+                  suffix = suffix .. string.char(math.random(97, 122))
+                end
               end
+              return tostring(os.time()) .. "-" .. suffix
             end
-            return tostring(os.time()) .. "-" .. suffix
-          end
-        '';
+          '';
+        };
       };
     };
 
