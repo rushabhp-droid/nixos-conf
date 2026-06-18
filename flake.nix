@@ -111,35 +111,20 @@
         buildInputs = [ ];
       };
 
-      nixosConfigurations = {
-        twin = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
+      nixosModules.default = ./modules/nixos;
+      homeManagerModules.default = ./modules/home-manager;
 
-          modules = [
-            # Core system configuration
-            ./hosts/laptop/configuration.nix
-
-            # Additional external modules
-            sops-nix.nixosModules.sops
-            disko.nixosModules.disko
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-
-            # System-wide overlays
-            ./overlays
-
-            # Home Manager global setup
-            (_: {
-              home-manager = {
-                useGlobalPkgs = false;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
-                users.rushabhp = ./hosts/laptop/home/home.nix;
-              };
-            })
-          ];
-        };
+      nixosConfigurations = import ./hosts {
+        inherit
+          self
+          inputs
+          nixpkgs
+          home-manager
+          stylix
+          disko
+          sops-nix
+          system
+          ;
       };
     };
 }

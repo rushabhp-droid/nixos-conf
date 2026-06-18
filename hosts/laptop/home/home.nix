@@ -1,6 +1,6 @@
-{ ... }:
+{ self, ... }:
 {
-  imports = [ ../../../modules/home-manager ];
+  imports = [ self.homeManagerModules.default ];
 
   home = {
     username = "rushabhp";

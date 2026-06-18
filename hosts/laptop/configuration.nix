@@ -1,4 +1,5 @@
 {
+  self,
   ...
 }:
 
@@ -6,7 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
-    ../../modules/nixos
+    self.nixosModules.default
   ];
 
   networking.hostName = "twin";
