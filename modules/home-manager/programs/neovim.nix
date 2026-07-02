@@ -127,10 +127,7 @@
             end
           '';
 
-          completion = {
-            nvim_cmp = false;
-            blink = true;
-          };
+          opts.legacy_commands = false;
 
           ui.enable = false; # render-markdown handles this
         };
@@ -178,32 +175,32 @@
 
       # ── Notes (Zettelkasten) ─────────────────────────────────────
       {
-        action = "<cmd>ObsidianNew<CR>";
+        action = "<cmd>Obsidian new<CR>";
         key = "<leader>nn";
         options.desc = "New Note";
       }
       {
-        action = "<cmd>ObsidianDailies<CR>";
+        action = "<cmd>Obsidian dailies<CR>";
         key = "<leader>nd";
         options.desc = "Daily Notes";
       }
       {
-        action = "<cmd>ObsidianSearch<CR>";
+        action = "<cmd>Obsidian search<CR>";
         key = "<leader>ns";
         options.desc = "Search Notes";
       }
       {
-        action = "<cmd>ObsidianLinks<CR>";
+        action = "<cmd>Obsidian links<CR>";
         key = "<leader>nl";
         options.desc = "Note Links";
       }
       {
-        action = "<cmd>ObsidianBacklinks<CR>";
+        action = "<cmd>Obsidian backlinks<CR>";
         key = "<leader>nb";
         options.desc = "Backlinks";
       }
       {
-        action = "<cmd>ObsidianTags<CR>";
+        action = "<cmd>Obsidian tags<CR>";
         key = "<leader>nt";
         options.desc = "Search Tags";
       }
