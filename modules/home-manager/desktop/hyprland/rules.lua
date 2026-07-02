@@ -22,6 +22,11 @@ hl.window_rule({
 })
 
 hl.window_rule({
+  match = {title = "File Operation Progress"};
+  float = true;
+})
+
+hl.window_rule({
     name  = "move-hyprland-run",
     match = { class = "hyprland-run" },
 

@@ -41,5 +41,6 @@
     bottles         # Wine prefix manager
     winetricks      # Wine helper scripts
     protontricks    # Proton-specific winetricks wrapper
+    prismlauncher   # Minecraft Launcher
   ];
 }

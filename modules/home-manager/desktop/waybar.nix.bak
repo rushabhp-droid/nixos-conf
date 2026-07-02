@@ -1,17 +1,9 @@
 { config, pkgs, ... }:
 
-let
-  # Alias for easier access to Stylix colors
-  colors = config.lib.stylix.colors.withHashtag;
-in
 {
-  # Disable Stylix's default Waybar theming so it doesn't overwrite our custom layout
-  stylix.targets.waybar.enable = false;
-
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
-     settings = {
+    settings = {
       mainBar = {
         layer = "top";
         position = "top";
@@ -26,19 +18,17 @@ in
         modules-center = [];
         
         modules-right = [
-          "tray"
-          "custom/seperator#1"
-          "custom/separator#2"
+          "custom/separator#1"
           "network"
-          "custom/separator#3"
+          "custom/separator#2"
           "cpu"
-          "custom/separator#4"
+          "custom/separator#3"
           "memory"
-          "custom/separator#5"
+          "custom/separator#4"
           "disk"
-          "custom/separator#6"
+          "custom/separator#5"
           "clock"
-          "custom/separator#7"
+          "custom/separator#6"
         ];
 
         "hyprland/workspaces" = {
@@ -88,28 +78,27 @@ in
       * {
         border: none;
         border-radius: 0;
-        /* Dynamically use Stylix fonts */
-        font-family: "${config.stylix.fonts.monospace.name}"; 
-        font-size: ${toString config.stylix.fonts.sizes.desktop}px;
+        font-family: "JetBrainsMono Nerd Font", monospace; 
+        font-size: 13px;
         min-height: 0;
       }
 
       window#waybar {
-        background-color: ${colors.base00}; 
-        color: ${colors.base05};
+        background-color: #1a1b26; 
+        color: #a9b1d6;
       }
 
       /* Hyprland Workspace Styling */
       #workspaces button {
         padding: 0 6px;
         background: transparent;
-        color: ${colors.base05};
+        color: #a9b1d6;
         border-bottom: 2px solid transparent;
       }
 
       #workspaces button.active {
-        color: ${colors.base0C}; /* Cyan/Teal accent */
-        border-bottom: 2px solid ${colors.base0C}; 
+        color: #2ac3de; 
+        border-bottom: 2px solid #2ac3de; 
       }
 
       #workspaces button:hover {
@@ -120,7 +109,7 @@ in
 
       /* Separator Styling */
       #custom-separator {
-        color: ${colors.base03}; /* Muted grey/comment color */
+        color: #565f89; 
         padding: 0 8px;
       }
 
@@ -131,30 +120,30 @@ in
         border-bottom: 2px solid transparent;
       }
 
-      /* Dynamic Stylix Base16 Module Colors */
+      /* Individual Module Colors */
       #network {
-        color: ${colors.base0D}; /* Blue */
-        border-bottom-color: ${colors.base0D};
+        color: #7aa2f7; 
+        border-bottom-color: #7aa2f7;
       }
 
       #cpu {
-        color: ${colors.base0B}; /* Green */
-        border-bottom-color: ${colors.base0B};
+        color: #9ece6a; 
+        border-bottom-color: #9ece6a;
       }
 
       #memory {
-        color: ${colors.base0E}; /* Purple */
-        border-bottom-color: ${colors.base0E};
+        color: #bb9af7; 
+        border-bottom-color: #bb9af7;
       }
 
       #disk {
-        color: ${colors.base0A}; /* Yellow */
-        border-bottom-color: ${colors.base0A};
+        color: #e0af68; 
+        border-bottom-color: #e0af68;
       }
 
       #clock {
-        color: ${colors.base0C}; /* Cyan/Teal */
-        border-bottom-color: ${colors.base0C};
+        color: #2ac3de; 
+        border-bottom-color: #2ac3de;
       }
     '';
   };
