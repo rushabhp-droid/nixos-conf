@@ -26,6 +26,18 @@
     plugins = {
       telescope.enable = true;
 
+      noice.enable = true;
+
+      none-ls = {
+        enable = true;
+
+        sources = {
+          formatting = {
+            nixfmt.enable = true;
+        };
+      };
+    };
+
       alpha = {
         enable = true;
         theme = "dashboard";

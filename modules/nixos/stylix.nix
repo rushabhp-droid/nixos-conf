@@ -2,7 +2,7 @@
   stylix = {
     enable = true;
 
-    image = ../../wallpapers/spider-noir.jpg;
+    image = ../../wallpapers/alien-isolation-2-radar.png;
 
     polarity = "dark";
 
