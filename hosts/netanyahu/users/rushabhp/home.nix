@@ -1,10 +1,10 @@
-{ userName, ... }:
+{ userName, stateVersion, ... }:
 
 {
   home = {
     username = userName;
     homeDirectory = "/home/${userName}";
-    stateVersion = "26.05";
+    stateVersion = stateVersion;
   };
 
   imports = [ ../../../../modules/home-manager ];

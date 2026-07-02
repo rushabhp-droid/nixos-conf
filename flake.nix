@@ -4,6 +4,11 @@
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,51 +62,76 @@
     inputs@{
       nixpkgs,
       disko,
-      auto-cpufreq,
       home-manager,
       stylix,
-      cardwire,
-      nixvim,
       ...
     }:
     let
-      hostname = "netanyahu";
-      userName = "rushabhp";
+      mkHost =
+        hostname:
+        {
+          system ? "x86_64-linux",
+          userName,
+          stateVersion,
+          wallpaper,
+          extraModules ? [ ],
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit
+              inputs
+              hostname
+              userName
+              stateVersion
+              wallpaper
+              ;
+          };
+          modules = [
+            # Declarative Disk config
+            disko.nixosModules.disko
+
+            # Stylix
+            stylix.nixosModules.stylix
+
+            ./hosts/${hostname}/configuration.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit
+                    inputs
+                    hostname
+                    userName
+                    stateVersion
+                    ;
+                };
+                users.${userName} = {
+                  imports = [
+                    ./hosts/${hostname}/users/${userName}/home.nix
+                  ];
+                };
+              };
+            }
+          ] ++ extraModules;
+        };
     in
     {
-      nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs hostname userName; };
-        modules = [
-
-          # Declarative Disk config
-          disko.nixosModules.disko
-
-          # A GPU Manager
-          cardwire.nixosModules.default
-
-          # auto-cpufre
-          auto-cpufreq.nixosModules.default
-
-          # Stylix
-          stylix.nixosModules.stylix
-
-          ./hosts/${hostname}/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs hostname userName; };
-              users.${userName} = {
-                imports = [
-
-                  ./hosts/netanyahu/users/rushabhp/home.nix
-                ];
-              };
-            };
-          }
-        ];
+      nixosConfigurations = builtins.mapAttrs mkHost {
+        netanyahu = {
+          userName = "rushabhp";
+          stateVersion = "26.05";
+          wallpaper = ./wallpapers/alien-isolation-2-radar.png;
+          extraModules = [
+            # GPU Manager
+            inputs.cardwire.nixosModules.default
+            # auto-cpufreq
+            inputs.auto-cpufreq.nixosModules.default
+          ];
+        };
       };
     };
 }

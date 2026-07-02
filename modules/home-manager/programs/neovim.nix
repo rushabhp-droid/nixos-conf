@@ -73,8 +73,6 @@
         enable = true;
         servers = {
           nil_ls.enable = true;
-          # clangd.enable = true;
-          # pyright.enable = true;
           bashls.enable = true;
         };
       };

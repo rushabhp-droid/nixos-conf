@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   # Create a persistent symlink for the Intel iGPU
   services.udev.extraRules = ''

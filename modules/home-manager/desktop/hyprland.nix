@@ -11,10 +11,6 @@
 
     configType = "lua";
 
-    #plugins = [
-    #  (pkgs.callPackage ./hyprland/plugins/hyprglass.nix { })
-    #];
-
     extraLuaFiles = {
 
       "on" = {

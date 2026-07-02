@@ -1,5 +1,6 @@
 {
   pkgs,
+  stateVersion,
   ...
 }:
 
@@ -12,6 +13,12 @@
 
     # NixOS System Modules
     ../../modules/nixos
+
+    # Hardware-specific modules (per-host)
+    ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/cardwire.nix
+    ../../modules/nixos/auto-cpufreq.nix
+    ../../modules/nixos/udev.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -21,6 +28,5 @@
     wget
   ];
 
-  system.stateVersion = "26.05"; # Did you read the comment?
-
+  system.stateVersion = stateVersion;
 }

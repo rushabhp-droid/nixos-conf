@@ -7,6 +7,7 @@
       "networkmanager"
       "video"
       "audio"
+      "libvirtd"
     ];
     packages = with pkgs; [
       tree

@@ -9,32 +9,28 @@
     fzf
   ];
 
-
-programs = {
-
-  git = {
-    enable = true;
-    settings = {
-      user = {
-	name = "Rushabh Patil";
-	email = "rushabhpatil3407@gmail.com";
+  programs = {
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Rushabh Patil";
+          email = "rushabhpatil3407@gmail.com";
+        };
       };
     };
 
-  };
+    bat = {
+      enable = true;
+    };
 
-  bat = {
-    enable = true;
-  };
-
-  helix = {
-    enable = true;
-
-    settings = {
-      editor = {
-        line-number = "relative";
+    helix = {
+      enable = true;
+      settings = {
+        editor = {
+          line-number = "relative";
+        };
       };
     };
-  };
   };
 }

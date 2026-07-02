@@ -12,7 +12,6 @@ in
   programs.zen-browser = {
     enable = true;
     setAsDefaultBrowser = true;
-    package = null;
 
     profiles.default = {
       extensions.packages = with firefox-addons; [

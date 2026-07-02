@@ -1,8 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, wallpaper, ... }: {
   stylix = {
     enable = true;
 
-    image = ../../wallpapers/alien-isolation-2-radar.png;
+    image = wallpaper;
 
     polarity = "dark";
 
