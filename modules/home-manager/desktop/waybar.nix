@@ -131,7 +131,7 @@ in
       }
 
       /* Right Module Base Styling */
-      #network, #cpu, #memory, #disk, #clock, #battery {
+      #network, #cpu, #memory, #disk, #clock, #battery, #tray {
         padding: 0 4px;
         margin: 0 2px;
         border-bottom: 2px solid transparent;
@@ -166,6 +166,11 @@ in
       #battery {
         color: ${colors.base0E};
         border-bottom-color: ${colors.base0E};
+      }
+
+      #tray {
+        color: ${colors.base05}; /* Foreground */
+        border-bottom-color: ${colors.base04};
       }
     '';
   };
