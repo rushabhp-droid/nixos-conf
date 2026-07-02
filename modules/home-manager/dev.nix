@@ -15,7 +15,7 @@ programs = {
   git = {
     enable = true;
 
-    config = {
+    settings = {
       user = {
 	name = "Rushabh Patil";
 	email = "rushabhpatil3407@gmail.com";
