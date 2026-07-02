@@ -8,10 +8,14 @@ rustPlatform.buildRustPackage rec {
     owner = "webstonehq";
     repo = "tuxedo";
     rev = version;
-    sha256 = lib.fakeSha256;
+    hash = "sha256-ef6LYwUkaT8xEZ2KuJ7uVRdX8DSt32s8yPyXT/rKuuQ=";
   };
 
-  cargoSha256 = lib.fakeSha256;
+  cargoHash = "sha256-PIhtD0/0hxFOn51PwOWCtz82a2dvhS+2jbd8Wvr/JUM=";
+
+  preCheck = ''
+    export HOME=$(mktemp -d)
+  '';
 
   meta = with lib; {
     description = "Tuxedo";

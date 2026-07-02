@@ -8,7 +8,15 @@
     fzf
   ];
 
+
   programs = {
+    gh = {
+      enable = true;
+
+      settings = {
+         git_protocol = "https";
+      };
+    };
     git = {
       enable = true;
       settings = {
