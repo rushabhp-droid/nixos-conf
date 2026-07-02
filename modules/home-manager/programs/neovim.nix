@@ -127,8 +127,7 @@
             end
           '';
 
-          opts.legacy_commands = false;
-
+          
           ui.enable = false; # render-markdown handles this
         };
       };
