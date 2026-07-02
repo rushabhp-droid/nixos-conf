@@ -26,6 +26,7 @@
     vim
     git
     wget
+    (callPackage ../../pkgs/tuxedo.nix {})
   ];
 
   system.stateVersion = stateVersion;
