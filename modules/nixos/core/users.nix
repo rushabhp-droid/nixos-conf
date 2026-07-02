@@ -8,6 +8,7 @@
       "video"
       "audio"
       "libvirtd"
+      "librepods"
     ];
     packages = with pkgs; [
       tree

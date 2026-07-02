@@ -4,7 +4,6 @@
     nil
     nixfmt
     helix
-    devenv
     bat
     fzf
   ];
@@ -22,6 +21,12 @@
 
     bat = {
       enable = true;
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv = true;
+      enableBashIntegration = true;
     };
 
     helix = {
