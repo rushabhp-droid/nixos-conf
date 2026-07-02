@@ -25,7 +25,6 @@
   environment.systemPackages = with pkgs; [
     vim
     git
-    btop
     wget
   ];
 
