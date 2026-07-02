@@ -19,6 +19,7 @@
     ../../modules/nixos/cardwire.nix
     ../../modules/nixos/auto-cpufreq.nix
     ../../modules/nixos/udev.nix
+    ../../modules/nixos/gaming.nix
   ];
 
   environment.systemPackages = with pkgs; [
