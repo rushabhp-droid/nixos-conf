@@ -8,6 +8,8 @@ _: {
     ./neovim.nix
     ./wleave.nix
     ./rofi.nix
+    ./zathura.nix
     ./zen.nix
+
   ];
 }

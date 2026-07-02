@@ -49,6 +49,7 @@
     clapper # Media Player
     gnome-text-editor # GUI text editor
     wleave # Logout Menu
+    brightnessctl
 
     # Clipboard
     wl-clipboard
