@@ -11,7 +11,7 @@ in
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-     settings = {
+    settings = {
       mainBar = {
         layer = "top";
         position = "top";
@@ -26,19 +26,21 @@ in
         modules-center = [];
         
         modules-right = [
+          "custom/separator#1"
           "tray"
-          "custom/seperator#1"
           "custom/separator#2"
           "network"
           "custom/separator#3"
-          "cpu"
+          "battery"
           "custom/separator#4"
-          "memory"
+          "cpu"
           "custom/separator#5"
-          "disk"
+          "memory"
           "custom/separator#6"
-          "clock"
+          "disk"
           "custom/separator#7"
+          "clock"
+          "custom/separator#8"
         ];
 
         "hyprland/workspaces" = {
@@ -58,6 +60,10 @@ in
           format-ethernet = "Online";
           format-disconnected = "Offline";
           tooltip-format = "{ifname} via {gwaddr}";
+        };
+
+        battery = {
+          format = "BAT: {capacity}%";
         };
 
         cpu = {
@@ -155,6 +161,11 @@ in
       #clock {
         color: ${colors.base0C}; /* Cyan/Teal */
         border-bottom-color: ${colors.base0C};
+      }
+
+      #battery {
+        color: ${colors.base0E};
+        border-bottom-color: ${colors.base0E};
       }
     '';
   };

@@ -34,9 +34,9 @@
         sources = {
           formatting = {
             nixfmt.enable = true;
+          };
         };
       };
-    };
 
       alpha = {
         enable = true;
@@ -44,7 +44,7 @@
       };
 
       nix = {
-	enable = true;
+        enable = true;
       };
 
       treesitter = {

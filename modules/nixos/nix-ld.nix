@@ -1,6 +1,3 @@
-_:{
-  programs.nix-ld = { 
-    enable = true;
-  };
+_: {
+  programs.nix-ld.enable = true;
 }
-

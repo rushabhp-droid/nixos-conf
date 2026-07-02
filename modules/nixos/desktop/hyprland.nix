@@ -43,7 +43,6 @@
     swayosd # Volume - Brightness control gui
     kitty # Terminal Emulator
     rofi # Application Launcher
-    # inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default # Shell
     waybar
     blueman # Bluetooth device manager
     loupe # image viewer

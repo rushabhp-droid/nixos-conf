@@ -1,4 +1,3 @@
-_:
-{
-    environment.pathsToLink = [ "/share/bash-completion" ];
+_: {
+  environment.pathsToLink = [ "/share/bash-completion" ];
 }
