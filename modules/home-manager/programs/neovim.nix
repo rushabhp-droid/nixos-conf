@@ -129,6 +129,7 @@
 
           
           ui.enable = false; # render-markdown handles this
+          legacy_commands = false;
         };
       };
     };
