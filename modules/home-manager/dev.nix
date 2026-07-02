@@ -23,9 +23,14 @@
       enable = true;
     };
 
+    bash = {
+      enable = true;
+      enableCompletion = true;
+    };
+
     direnv = {
       enable = true;
-      nix-direnv = true;
+      nix-direnv.enable = true;
       enableBashIntegration = true;
     };
 

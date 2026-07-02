@@ -3,6 +3,7 @@ _: {
     ./core
     ./desktop
     ./bluetooth.nix
+    ./bash.nix
     ./stylix.nix
     ./virtualization.nix
     ./nix-ld.nix
