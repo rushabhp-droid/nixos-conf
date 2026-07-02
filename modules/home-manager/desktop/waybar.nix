@@ -131,7 +131,7 @@ in
       }
 
       /* Right Module Base Styling */
-      #network, #cpu, #memory, #disk, #clock {
+      #network, #cpu, #memory, #disk, #clock, #battery {
         padding: 0 4px;
         margin: 0 2px;
         border-bottom: 2px solid transparent;
