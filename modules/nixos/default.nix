@@ -2,13 +2,13 @@ _: {
   imports = [
     ./core
     ./desktop
-    ./bluetooth.nix
-    ./bash.nix
-    ./stylix.nix
-    ./virtualization.nix
-    ./nix-ld.nix
-    ./ssh.nix
-    ./security.nix
-    ./zram.nix
+    ./services/bluetooth.nix
+    ./system/bash.nix
+    ./system/stylix.nix
+    ./services/virtualization.nix
+    ./system/nix-ld.nix
+    ./services/ssh.nix
+    ./system/security.nix
+    ./services/zram.nix
   ];
 }

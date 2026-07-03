@@ -15,18 +15,26 @@
     ../../modules/nixos
 
     # Hardware-specific modules (per-host)
-    ../../modules/nixos/nvidia.nix
-    ../../modules/nixos/cardwire.nix
-    ../../modules/nixos/auto-cpufreq.nix
-    ../../modules/nixos/udev.nix
-    ../../modules/nixos/gaming.nix
+    ../../modules/nixos/hardware/nvidia.nix
+    ../../modules/nixos/hardware/cardwire.nix
+    ../../modules/nixos/hardware/auto-cpufreq.nix
+    ../../modules/nixos/hardware/udev.nix
+    
+    # Roles
+    ../../modules/nixos/roles/gaming.nix
+  ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      tuxedo = prev.callPackage ../../pkgs/tuxedo.nix {};
+    })
   ];
 
   environment.systemPackages = with pkgs; [
     vim
     git
     wget
-    (callPackage ../../pkgs/tuxedo.nix {})
+    tuxedo
   ];
 
   system.stateVersion = stateVersion;
