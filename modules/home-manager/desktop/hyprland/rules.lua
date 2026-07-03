@@ -33,3 +33,12 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+-- make the rename dialog floating
+hl.window_rule({
+    match = {
+        class = "^(Thunar)$",
+        title = "^(Rename .*)"
+    },
+    float = true
+})
