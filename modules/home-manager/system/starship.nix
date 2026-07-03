@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  progrma.starship = {
+  programs.starship = {
     enable = true;
     enableBashIntegration = true;
   };
