@@ -8,6 +8,7 @@ _: {
     ./virtualization.nix
     ./nix-ld.nix
     ./ssh.nix
+    ./security.nix
     ./zram.nix
   ];
 }

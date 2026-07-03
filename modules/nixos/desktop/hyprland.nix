@@ -45,11 +45,10 @@
     rofi # Application Launcher
     waybar
     blueman # Bluetooth device manager
-    loupe # image viewer
-    clapper # Media Player
     gnome-text-editor # GUI text editor
     wleave # Logout Menu
     brightnessctl
+    playerctl
 
     # Clipboard
     wl-clipboard
