@@ -2,9 +2,6 @@
 {
   programs.wleave = {
     enable = true;
-
-    package = null;
-
     settings = {
       show-keybinds = true;
       buttons = [
