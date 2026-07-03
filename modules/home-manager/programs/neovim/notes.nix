@@ -1,6 +1,45 @@
 { userName, ... }:
 {
   programs.nixvim = {
+
+     # ── Notes (Zettelkasten) ─────────────────────────────────────
+      {
+       action = "<cmd>Obsidian new<CR>";
+        key = "<leader>nn";
+        options.desc = "New Note";
+      }
+      {
+        action = "<cmd>Obsidian dailies<CR>";
+        key = "<leader>nd";
+        options.desc = "Daily Notes";
+      }
+      {
+        action = "<cmd>Obsidian search<CR>";
+        key = "<leader>ns";
+        options.desc = "Search Notes";
+      }
+      {
+        action = "<cmd>Obsidian links<CR>";
+        key = "<leader>nl";
+        options.desc = "Note Links";
+      }
+      {
+        action = "<cmd>Obsidian backlinks<CR>";
+        key = "<leader>nb";
+        options.desc = "Backlinks";
+      }
+      {
+        action = "<cmd>Obsidian tags<CR>";
+        key = "<leader>nt";
+        options.desc = "Search Tags";
+      }
+      {
+        action = "<cmd>RenderMarkdown toggle<CR>";
+        key = "<leader>nr";
+        options.desc = "Toggle Preview";
+      }
+
+
     plugins = {
       # In-editor markdown rendering (headings, checkboxes, tables, code blocks)
       render-markdown = {
