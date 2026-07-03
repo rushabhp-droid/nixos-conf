@@ -6,7 +6,7 @@ _: {
     ./swayosd.nix
     ./kitty.nix
     ./multimedia.nix
-    ./neovim.nix
+    ./neovim
     ./wleave.nix
     ./rofi.nix
     ./zathura.nix
