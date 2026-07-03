@@ -10,6 +10,7 @@ _: {
     ./wleave.nix
     ./rofi.nix
     ./zathura.nix
+    ./zoxide.nix
     ./zen.nix
 
   ];
