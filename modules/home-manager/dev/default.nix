@@ -26,6 +26,11 @@
       };
     };
 
+    mcfly = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+
     bat = {
       enable = true;
     };
