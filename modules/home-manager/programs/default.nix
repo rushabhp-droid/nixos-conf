@@ -5,6 +5,7 @@ _: {
     ./swaync.nix
     ./swayosd.nix
     ./kitty.nix
+    ./multimedia.nix
     ./neovim.nix
     ./wleave.nix
     ./rofi.nix
