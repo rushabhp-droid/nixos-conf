@@ -6,6 +6,5 @@
 
   security.apparmor = {
     enable = true;
-    killUnconfined = false;
   };
 }
