@@ -13,6 +13,7 @@
     gvfs.enable = true;
     tumbler.enable = true;
     blueman.enable = true;
+    swayosd.enable = true;
   };
 
   security.polkit.enable = true;
@@ -33,26 +34,15 @@
   environment.systemPackages = with pkgs; [
     # Hypr Eco System
     hyprpolkitagent
-    hypridle
-    hyprlock
     hyprpwcenter
-    hyprpaper
 
     # Desktop
-    swaynotificationcenter # Notification Daemon
-    swayosd # Volume - Brightness control gui
-    kitty # Terminal Emulator
-    rofi # Application Launcher
-    waybar
-    blueman # Bluetooth device manager
     gnome-text-editor # GUI text editor
-    wleave # Logout Menu
     brightnessctl
     playerctl
 
     # Clipboard
     wl-clipboard
-    cliphist
 
     # Screenshot
     grim
