@@ -13,7 +13,7 @@
     gvfs.enable = true;
     tumbler.enable = true;
     blueman.enable = true;
-    swayosd.enable = true;
+    udev.packages = with pkgs; [ swayosd ]; # Adds udev rules for Caps Lock backend
   };
 
   security.polkit.enable = true;
