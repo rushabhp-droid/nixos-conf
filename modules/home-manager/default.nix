@@ -5,5 +5,6 @@ _: {
     ./system/gtk.nix
     ./dev
     ./system/xdg.nix
+    ./system/starship.nix
   ];
 }
