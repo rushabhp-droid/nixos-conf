@@ -111,7 +111,8 @@
                 };
               };
             }
-          ] ++ extraModules;
+          ]
+          ++ extraModules;
         };
     in
     {

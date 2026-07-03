@@ -30,6 +30,15 @@
       conceallevel = 2; # Required for render-markdown and obsidian link concealment
     };
 
+    autoCmd = [
+      {
+            callback = {
+          __raw = "function() vim.lsp.buf.format({ async = false }) end";
+        };
+        desc = "Format Rust files on save using LSP";
+      }
+    ];
+
     clipboard.providers.wl-copy.enable = true;
   };
 }

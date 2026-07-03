@@ -1,11 +1,10 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
 
   # AirPods Settings
   programs.librepods = {
     enable = true;
   };
-
 
   # Workaround for launching
   nixpkgs.overlays = [

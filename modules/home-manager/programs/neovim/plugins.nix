@@ -35,7 +35,7 @@
       trouble.enable = true;
       fidget.enable = true;
       neogit.enable = true;
-
+      
       gitsigns = {
         enable = true;
         settings = {

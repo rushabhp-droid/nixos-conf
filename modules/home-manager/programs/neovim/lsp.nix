@@ -23,6 +23,7 @@
         setupLspCapabilities = true;
       };
 
+      lsp-format.enable = true;
       lsp = {
         enable = true;
         servers = {
@@ -30,8 +31,16 @@
           bashls.enable = true;
           rust_analyzer = {
             enable = true;
+
             installCargo = false;
             installRustc = false;
+
+            # Optional: Pass specific settings directly to rust-analyzer
+            settings = {
+              checkOnSave = {
+                command = "clippy"; # Use clippy instead of cargo check for better linting
+              };
+            };
           };
         };
       };

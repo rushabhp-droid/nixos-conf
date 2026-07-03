@@ -2,6 +2,11 @@
   programs.nixvim = {
     keymaps = [
       {
+        action = "<cmd>lua vim.lsp.buf.format()<CR>";
+        key = "<leader>cf"; # Stands for "Code Format"
+        options.desc = "Format Document";
+      }
+      {
         action = "<cmd>Neotree toggle<CR>";
         key = "<leader>e";
         options.desc = "Toggle Explorer";
@@ -37,7 +42,7 @@
         action = "<cmd>Telescope man_pages<CR>";
         key = "<leader>fm";
         options.desc = "Man Pages";
-      } 
+      }
       # ── IDE Features ─────────────────────────────────────────────
       {
         action = "<cmd>Trouble diagnostics toggle<CR>";
@@ -49,7 +54,7 @@
         key = "<leader>gg";
         options.desc = "Git Status (Neogit)";
       }
-      
+
       # ── Debugging (DAP) ──────────────────────────────────────────
       {
         action = "<cmd>lua require('dap').toggle_breakpoint()<CR>";

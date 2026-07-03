@@ -8,13 +8,12 @@
     fzf
   ];
 
-
   programs = {
     gh = {
       enable = true;
 
       settings = {
-         git_protocol = "https";
+        git_protocol = "https";
       };
     };
     git = {
@@ -39,6 +38,11 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      enableBashIntegration = true;
+    };
+
+    lazygit = {
+      enable = true;
       enableBashIntegration = true;
     };
 
