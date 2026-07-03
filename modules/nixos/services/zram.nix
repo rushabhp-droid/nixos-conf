@@ -1,7 +1,7 @@
 _: {
   zramSwap = {
     enable = true;
-    memoryPercent = 100;
+    memoryPercent = 50;
   };
 
   systemd.oomd.enable = true;
