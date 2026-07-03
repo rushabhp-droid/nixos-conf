@@ -28,19 +28,19 @@
         servers = {
           nil_ls.enable = true;
           bashls.enable = true;
-          rust_analyzer.enable = true;
+          rust_analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+          };
         };
       };
 
       dap = {
         enable = true;
-        extensions = {
-          dap-ui = {
-            enable = true;
-          };
-          dap-virtual-text.enable = true;
-        };
       };
+      dap-ui.enable = true;
+      dap-virtual-text.enable = true;
     };
   };
 }
