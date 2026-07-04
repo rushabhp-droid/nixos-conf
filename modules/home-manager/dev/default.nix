@@ -99,6 +99,9 @@
     bash = {
       enable = true;
       enableCompletion = true;
+      initExtra = "
+      fastfetch
+      ";
     };
 
     direnv = {
