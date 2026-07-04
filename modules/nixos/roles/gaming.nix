@@ -34,13 +34,13 @@
 
   # ── Extra gaming packages ───────────────────────────────────────────
   environment.systemPackages = with pkgs; [
-    mangohud        # Vulkan/OpenGL overlay (FPS, temps, frame-times)
-    protonup-qt     # Manage GE-Proton / Proton-TKG versions
-    heroic          # Epic / GOG / Amazon launcher
-    lutris          # Multi-runner game manager
-    bottles         # Wine prefix manager
-    winetricks      # Wine helper scripts
-    protontricks    # Proton-specific winetricks wrapper
-    prismlauncher   # Minecraft Launcher
+    mangohud # Vulkan/OpenGL overlay (FPS, temps, frame-times)
+    protonup-qt # Manage GE-Proton / Proton-TKG versions
+    heroic # Epic / GOG / Amazon launcher
+    lutris # Multi-runner game manager
+    bottles # Wine prefix manager
+    winetricks # Wine helper scripts
+    protontricks # Proton-specific winetricks wrapper
+    prismlauncher # Minecraft Launcher
   ];
 }

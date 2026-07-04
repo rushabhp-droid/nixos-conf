@@ -3,7 +3,7 @@
     plugins = {
       telescope.enable = true;
       noice.enable = true;
-      
+
       alpha = {
         enable = true;
         theme = "dashboard";
@@ -11,7 +11,7 @@
 
       treesitter = {
         enable = true;
-        settings = { 
+        settings = {
           highlight.enable = true;
           ensure_installed = [
             "c"
@@ -24,7 +24,7 @@
           ];
         };
       };
-      
+
       treesitter-context.enable = true;
       lualine.enable = true;
       which-key.enable = true;
@@ -35,7 +35,7 @@
       trouble.enable = true;
       fidget.enable = true;
       neogit.enable = true;
-      
+
       gitsigns = {
         enable = true;
         settings = {

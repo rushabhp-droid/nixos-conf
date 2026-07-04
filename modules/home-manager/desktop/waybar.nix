@@ -22,9 +22,9 @@ in
           "hyprland/workspaces"
           "custom/separator#left"
         ];
-        
-        modules-center = [];
-        
+
+        modules-center = [ ];
+
         modules-right = [
           "custom/separator#1"
           "tray"

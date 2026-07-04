@@ -31,7 +31,7 @@
 
     autoCmd = [
       {
-            callback = {
+        callback = {
           __raw = "function() vim.lsp.buf.format({ async = false }) end";
         };
         desc = "Format Rust files on save using LSP";

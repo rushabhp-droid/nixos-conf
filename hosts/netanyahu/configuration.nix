@@ -19,14 +19,14 @@
     ../../modules/nixos/hardware/cardwire.nix
     ../../modules/nixos/hardware/auto-cpufreq.nix
     ../../modules/nixos/hardware/udev.nix
-    
+
     # Roles
     ../../modules/nixos/roles/gaming.nix
   ];
 
   nixpkgs.overlays = [
     (final: prev: {
-      tuxedo = prev.callPackage ../../pkgs/tuxedo.nix {};
+      tuxedo = prev.callPackage ../../pkgs/tuxedo.nix { };
     })
   ];
 
