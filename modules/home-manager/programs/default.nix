@@ -12,6 +12,5 @@ _: {
     ./zathura.nix
     ./zoxide.nix
     ./zen.nix
-
   ];
 }

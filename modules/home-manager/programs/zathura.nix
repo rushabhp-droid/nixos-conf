@@ -1,5 +1,5 @@
-_:{
-    programs.zathura = {
-        enable = true;
-    };
+_: {
+  programs.zathura = {
+    enable = true;
+  };
 }

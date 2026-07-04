@@ -3,8 +3,6 @@
   home.packages = with pkgs; [
     nil
     nixfmt
-    helix
-    bat
     fzf
   ];
 

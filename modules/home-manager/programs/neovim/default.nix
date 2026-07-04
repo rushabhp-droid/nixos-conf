@@ -5,7 +5,6 @@
     inputs.nixvim.homeModules.nixvim
     ./plugins.nix
     ./lsp.nix
-    # ./notes.nix
     ./keymaps.nix
   ];
 
