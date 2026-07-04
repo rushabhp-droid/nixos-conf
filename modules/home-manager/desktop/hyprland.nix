@@ -62,10 +62,6 @@
         decoration = {
           rounding = 5;
           rounding_power = 2;
-          motion_blur = {
-            enabled = true;
-          };
-
           active_opacity = 1.0;
           inactive_opacity = 0.95;
           blur = {

@@ -29,6 +29,7 @@
         servers = {
           nil_ls.enable = true;
           bashls.enable = true;
+          lua_ls.enable = true;
           rust_analyzer = {
             enable = true;
 
