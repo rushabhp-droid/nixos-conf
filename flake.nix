@@ -120,7 +120,7 @@
         netanyahu = {
           userName = "rushabhp";
           stateVersion = "26.05";
-          wallpaper = ./wallpapers/goth-bw.png;
+          wallpaper = ./wallpapers/nix-gruvbox.png;
           extraModules = [
             # GPU Manager
             inputs.cardwire.nixosModules.default
