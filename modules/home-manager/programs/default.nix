@@ -2,7 +2,6 @@ _: {
   imports = [
     ./btop.nix
     ./eza.nix
-    ./obsidian.nix
     ./swaync.nix
     ./swayosd.nix
     ./kitty.nix
