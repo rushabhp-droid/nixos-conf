@@ -52,6 +52,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   outputs =
     inputs@{
@@ -59,9 +64,18 @@
       disko,
       home-manager,
       stylix,
+      treefmt-nix,
       ...
     }:
     let
+      treefmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.x86_64-linux {
+        projectRootFile = "flake.nix";
+        programs = {
+          nixfmt.enable = true;
+          stylua.enable = true;
+        };
+      };
+
       mkHost =
         hostname:
         {
@@ -116,7 +130,7 @@
         };
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
+      formatter.x86_64-linux = treefmtEval.config.build.wrapper;
 
       nixosConfigurations = builtins.mapAttrs mkHost {
         netanyahu = {

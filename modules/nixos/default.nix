@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ../../overlays
     ./core
     ./desktop
     ./services/bluetooth.nix

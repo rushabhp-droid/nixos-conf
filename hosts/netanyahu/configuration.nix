@@ -24,12 +24,6 @@
     ../../modules/nixos/roles/gaming.nix
   ];
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      tuxedo = prev.callPackage ../../pkgs/tuxedo.nix { };
-    })
-  ];
-
   environment.systemPackages = with pkgs; [
     vim
     git

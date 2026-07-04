@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+_: {
   services.cliphist = {
     enable = true;
     allowImages = true;

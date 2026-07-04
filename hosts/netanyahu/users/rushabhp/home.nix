@@ -4,7 +4,7 @@
   home = {
     username = userName;
     homeDirectory = "/home/${userName}";
-    stateVersion = stateVersion;
+    inherit stateVersion;
   };
 
   imports = [ ../../../../modules/home-manager ];

@@ -1,35 +1,37 @@
 { pkgs, ... }:
 {
-  # ── Steam ───────────────────────────────────────────────────────────
-  programs.steam = {
-    enable = true;
-    # 32-bit library support (needed by many Proton titles)
-    gamescopeSession.enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
+  programs = {
+    # ── Steam ───────────────────────────────────────────────────────────
+    steam = {
+      enable = true;
+      # 32-bit library support (needed by many Proton titles)
+      gamescopeSession.enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
 
-  # ── Gamemode — on-demand CPU / GPU performance tuning ───────────────
-  programs.gamemode = {
-    enable = true;
-    enableRenice = true;
-    settings = {
-      general = {
-        renice = 10;
-        softrealtime = "auto";
-      };
-      gpu = {
-        apply_gpu_optimisations = "accept-responsibility";
-        gpu_device = 0;
+    # ── Gamemode — on-demand CPU / GPU performance tuning ───────────────
+    gamemode = {
+      enable = true;
+      enableRenice = true;
+      settings = {
+        general = {
+          renice = 10;
+          softrealtime = "auto";
+        };
+        gpu = {
+          apply_gpu_optimisations = "accept-responsibility";
+          gpu_device = 0;
+        };
       };
     };
-  };
 
-  # ── GameScope — micro-compositor for per-game display control ───────
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
+    # ── GameScope — micro-compositor for per-game display control ───────
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
   };
 
   # ── Extra gaming packages ───────────────────────────────────────────

@@ -1,3 +1,3 @@
 hl.on("hyprland.start", function()
-  hl.exec_cmd("wleave -s")
+	hl.exec_cmd("wleave -s")
 end)
