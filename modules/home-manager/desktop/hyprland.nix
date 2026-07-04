@@ -14,37 +14,37 @@
     extraLuaFiles = {
 
       "on" = {
-        content = ./hyprland/on.lua;
+        content = ./hyprland/lua/on.lua;
         autoLoad = true;
       };
 
       "monitors" = {
-        content = ./hyprland/monitors.lua;
+        content = ./hyprland/lua/monitors.lua;
         autoLoad = true;
       };
 
       "animations" = {
-        content = ./hyprland/animations/animations-fast.lua;
+        content = ./hyprland/lua/animations/animations-fast.lua;
         autoLoad = true;
       };
 
       "binds" = {
-        content = ./hyprland/binds.lua;
+        content = ./hyprland/lua/binds.lua;
         autoLoad = true;
       };
 
       "input" = {
-        content = ./hyprland/input.lua;
+        content = ./hyprland/lua/input.lua;
         autoLoad = true;
       };
 
       "misc" = {
-        content = ./hyprland/misc.lua;
+        content = ./hyprland/lua/misc.lua;
         autoLoad = true;
       };
 
       "rules" = {
-        content = ./hyprland/rules.lua;
+        content = ./hyprland/lua/rules.lua;
         autoLoad = true;
       };
     };
@@ -62,6 +62,7 @@
         decoration = {
           rounding = 5;
           rounding_power = 2;
+          motion_blur = true;
 
           active_opacity = 1.0;
           inactive_opacity = 0.95;
@@ -70,6 +71,7 @@
             size = 7;
             passes = 3;
             vibrancy = 0.1696;
+            new_optimizations = true;
           };
         };
       };

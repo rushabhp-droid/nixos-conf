@@ -26,6 +26,16 @@
       };
     };
 
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Rushabh Patil";
+          email = "rushabhpatil3407@gmail.com";
+        };
+      };
+    };
+
     mcfly = {
       enable = true;
       enableBashIntegration = true;

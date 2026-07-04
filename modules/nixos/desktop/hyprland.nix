@@ -14,6 +14,7 @@
     tumbler.enable = true;
     blueman.enable = true;
     udev.packages = with pkgs; [ swayosd ]; # Adds udev rules for Caps Lock backend
+    libinput.enable = true;
   };
 
   security.polkit.enable = true;
