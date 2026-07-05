@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   browser = "zen-twilight.desktop";
   file-manager = "thunar.desktop";
@@ -6,33 +11,37 @@ let
   video-player = "com.github.rafostar.Clapper.desktop";
 in
 {
-  home = {
-    packages = with pkgs; [
-      xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
-      xdg-user-dirs
-    ];
-  };
+  options.homeModules.system.xdg.enable = lib.mkEnableOption "xdg";
+  config = lib.mkIf config.homeModules.system.xdg.enable {
 
-  xdg = {
-    enable = true;
-    mimeApps = rec {
+    home = {
+      packages = with pkgs; [
+        xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
+        xdg-user-dirs
+      ];
+    };
+
+    xdg = {
       enable = true;
+      mimeApps = rec {
+        enable = true;
 
-      associations.added = defaultApplications;
-      defaultApplications = {
-        "inode/directory" = file-manager;
+        associations.added = defaultApplications;
+        defaultApplications = {
+          "inode/directory" = file-manager;
 
-        "x-scheme-handler/http" = browser;
-        "x-scheme-handler/https" = browser;
-        "text/html" = browser;
+          "x-scheme-handler/http" = browser;
+          "x-scheme-handler/https" = browser;
+          "text/html" = browser;
 
-        "image/png" = image-viewer;
-        "image/jpeg" = image-viewer;
-        "image/gif" = image-viewer;
-        "image/svg+xml" = image-viewer;
+          "image/png" = image-viewer;
+          "image/jpeg" = image-viewer;
+          "image/gif" = image-viewer;
+          "image/svg+xml" = image-viewer;
 
-        "video/mp4" = video-player;
-        "video/ogg" = video-player;
+          "video/mp4" = video-player;
+          "video/ogg" = video-player;
+        };
       };
     };
   };

@@ -1,43 +1,48 @@
 {
+  lib,
   config,
   pkgs,
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    nvidia-vaapi-driver
-  ];
+  options.hostModules.hardware.nvidia.enable = lib.mkEnableOption "nvidia";
+  config = lib.mkIf config.hostModules.hardware.nvidia.enable {
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  boot.blacklistedKernelModules = [ "nouveau" ];
+    environment.systemPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
 
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-      ];
-    };
+    services.xserver.videoDrivers = [ "nvidia" ];
+    boot.blacklistedKernelModules = [ "nouveau" ];
 
-    nvidia = {
-      modesetting.enable = true;
-
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
-
-      open = true;
-
-      powerManagement = {
+    hardware = {
+      graphics = {
         enable = true;
-        finegrained = true;
+        enable32Bit = true;
+        extraPackages = with pkgs; [
+          intel-media-driver
+        ];
       };
-      prime = {
-        offload = {
+
+      nvidia = {
+        modesetting.enable = true;
+
+        package = config.boot.kernelPackages.nvidiaPackages.latest;
+
+        open = true;
+
+        powerManagement = {
           enable = true;
-          enableOffloadCmd = true;
+          finegrained = true;
         };
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
+        prime = {
+          offload = {
+            enable = true;
+            enableOffloadCmd = true;
+          };
+          intelBusId = "PCI:0:2:0";
+          nvidiaBusId = "PCI:1:0:0";
+        };
       };
     };
   };

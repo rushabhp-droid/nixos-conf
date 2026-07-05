@@ -1,8 +1,13 @@
-_: {
-  zramSwap = {
-    enable = true;
-    memoryPercent = 50;
-  };
+{ lib, config, ... }:
+{
+  options.hostModules.services.zram.enable = lib.mkEnableOption "zram";
+  config = lib.mkIf config.hostModules.services.zram.enable {
 
-  systemd.oomd.enable = true;
+    zramSwap = {
+      enable = true;
+      memoryPercent = 50;
+    };
+
+    systemd.oomd.enable = true;
+  };
 }

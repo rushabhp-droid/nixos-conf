@@ -1,26 +1,34 @@
 let
   # Recursively find all .nix files in a directory, excluding default.nix.
   # Returns an attribute set where values are the paths to the modules.
-  scanPaths = path:
+  scanPaths =
+    path:
     let
-      getPaths = dir:
-        builtins.concatMap
-          (name:
-            let
-              p = dir + "/${name}";
-              type = (builtins.readDir dir).${name};
-            in
-            if type == "directory" then
-              getPaths p
-            else if type == "regular" && builtins.match ".*\\.nix$" name != null && p != path + "/default.nix" then
-              [ p ]
-            else
-              [ ]
-          )
-          (builtins.attrNames (builtins.readDir dir));
+      getPaths =
+        dir:
+        builtins.concatMap (
+          name:
+          let
+            p = dir + "/${name}";
+            type = (builtins.readDir dir).${name};
+          in
+          if type == "directory" then
+            getPaths p
+          else if
+            type == "regular" && builtins.match ".*\\.nix$" name != null && p != path + "/default.nix"
+          then
+            [ p ]
+          else
+            [ ]
+        ) (builtins.attrNames (builtins.readDir dir));
       paths = getPaths path;
     in
-    builtins.listToAttrs (map (p: { name = toString p; value = p; }) paths);
+    builtins.listToAttrs (
+      map (p: {
+        name = toString p;
+        value = p;
+      }) paths
+    );
 in
 {
   inherit scanPaths;

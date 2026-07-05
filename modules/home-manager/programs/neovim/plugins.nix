@@ -1,45 +1,49 @@
+{ lib, config, ... }:
 {
-  programs.nixvim = {
-    plugins = {
-      telescope.enable = true;
-      noice.enable = true;
+  config = lib.mkIf config.homeModules.programs.neovim.enable {
 
-      alpha = {
-        enable = true;
-        theme = "dashboard";
-      };
+    programs.nixvim = {
+      plugins = {
+        telescope.enable = true;
+        noice.enable = true;
 
-      treesitter = {
-        enable = true;
-        settings = {
-          highlight.enable = true;
-          ensure_installed = [
-            "c"
-            "cpp"
-            "nix"
-            "python"
-            "bash"
-            "markdown"
-            "markdown_inline"
-          ];
+        alpha = {
+          enable = true;
+          theme = "dashboard";
         };
-      };
 
-      treesitter-context.enable = true;
-      lualine.enable = true;
-      which-key.enable = true;
-      neo-tree.enable = true;
-      comment.enable = true;
-      nvim-autopairs.enable = true;
-      indent-blankline.enable = true;
-      trouble.enable = true;
-      fidget.enable = true;
-      neogit.enable = true;
+        treesitter = {
+          enable = true;
+          settings = {
+            highlight.enable = true;
+            ensure_installed = [
+              "c"
+              "cpp"
+              "nix"
+              "python"
+              "bash"
+              "markdown"
+              "markdown_inline"
+            ];
+          };
+        };
 
-      gitsigns = {
-        enable = true;
-        settings = {
-          current_line_blame = true; # Shows git blame for the current line
+        treesitter-context.enable = true;
+        lualine.enable = true;
+        which-key.enable = true;
+        neo-tree.enable = true;
+        comment.enable = true;
+        nvim-autopairs.enable = true;
+        indent-blankline.enable = true;
+        trouble.enable = true;
+        fidget.enable = true;
+        neogit.enable = true;
+
+        gitsigns = {
+          enable = true;
+          settings = {
+            current_line_blame = true; # Shows git blame for the current line
+          };
         };
       };
     };

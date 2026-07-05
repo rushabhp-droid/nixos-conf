@@ -1,14 +1,24 @@
-{ pkgs, ... }: {
-  boot = {
-    loader = {
-      limine.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [
-      "splash"
-    ];
-  };
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.hostModules.core.boot.enable = lib.mkEnableOption "boot";
+  config = lib.mkIf config.hostModules.core.boot.enable {
 
-  services.fstrim.enable = true;
+    boot = {
+      loader = {
+        limine.enable = true;
+        efi.canTouchEfiVariables = true;
+      };
+      kernelPackages = pkgs.linuxPackages_latest;
+      kernelParams = [
+        "splash"
+      ];
+    };
+
+    services.fstrim.enable = true;
+  };
 }

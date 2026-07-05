@@ -1,40 +1,50 @@
-{ inputs, pkgs, ... }:
 {
-  # Import all our sub-modules
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  options.homeModules.programs.neovim.enable = lib.mkEnableOption "neovim";
   imports = [
     inputs.nixvim.homeModules.nixvim
   ];
+  config = lib.mkIf config.homeModules.programs.neovim.enable {
 
-  stylix.targets.nixvim.enable = true;
+    # Import all our sub-modules
 
-  home.packages = with pkgs; [
-    ripgrep
-  ];
+    stylix.targets.nixvim.enable = true;
 
-  programs.nixvim = {
-    enable = true;
-    globals.mapleader = " ";
-
-    opts = {
-      number = true;
-      relativenumber = true;
-      shiftwidth = 2;
-      clipboard = "unnamedplus";
-      signcolumn = "yes";
-      showmode = false;
-      cursorline = true;
-      conceallevel = 2; # Required for render-markdown and obsidian link concealment
-    };
-
-    autoCmd = [
-      {
-        callback = {
-          __raw = "function() vim.lsp.buf.format({ async = false }) end";
-        };
-        desc = "Format Rust files on save using LSP";
-      }
+    home.packages = with pkgs; [
+      ripgrep
     ];
 
-    clipboard.providers.wl-copy.enable = true;
+    programs.nixvim = {
+      enable = true;
+      globals.mapleader = " ";
+
+      opts = {
+        number = true;
+        relativenumber = true;
+        shiftwidth = 2;
+        clipboard = "unnamedplus";
+        signcolumn = "yes";
+        showmode = false;
+        cursorline = true;
+        conceallevel = 2; # Required for render-markdown and obsidian link concealment
+      };
+
+      autoCmd = [
+        {
+          callback = {
+            __raw = "function() vim.lsp.buf.format({ async = false }) end";
+          };
+          desc = "Format Rust files on save using LSP";
+        }
+      ];
+
+      clipboard.providers.wl-copy.enable = true;
+    };
   };
 }

@@ -1,177 +1,181 @@
-{ config, ... }:
+{ lib, config, ... }:
 
 let
   # Alias for easier access to Stylix colors
   colors = config.lib.stylix.colors.withHashtag;
 in
 {
-  # Disable Stylix's default Waybar theming so it doesn't overwrite our custom layout
-  stylix.targets.waybar.enable = false;
+  options.homeModules.desktop.waybar.enable = lib.mkEnableOption "waybar";
+  config = lib.mkIf config.homeModules.desktop.waybar.enable {
 
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        height = 30;
-        spacing = 0;
+    # Disable Stylix's default Waybar theming so it doesn't overwrite our custom layout
+    stylix.targets.waybar.enable = false;
 
-        modules-left = [
-          "hyprland/workspaces"
-          "custom/separator#left"
-        ];
+    programs.waybar = {
+      enable = true;
+      systemd.enable = true;
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
+          height = 30;
+          spacing = 0;
 
-        modules-center = [ ];
+          modules-left = [
+            "hyprland/workspaces"
+            "custom/separator#left"
+          ];
 
-        modules-right = [
-          "custom/separator#1"
-          "tray"
-          "custom/separator#2"
-          "network"
-          "custom/separator#3"
-          "battery"
-          "custom/separator#4"
-          "cpu"
-          "custom/separator#5"
-          "memory"
-          "custom/separator#6"
-          "disk"
-          "custom/separator#7"
-          "clock"
-          "custom/separator#8"
-        ];
+          modules-center = [ ];
 
-        "hyprland/workspaces" = {
-          format = "{name}";
-          disable-scroll = true;
-          all-outputs = true;
-          on-click = "activate";
-        };
+          modules-right = [
+            "custom/separator#1"
+            "tray"
+            "custom/separator#2"
+            "network"
+            "custom/separator#3"
+            "battery"
+            "custom/separator#4"
+            "cpu"
+            "custom/separator#5"
+            "memory"
+            "custom/separator#6"
+            "disk"
+            "custom/separator#7"
+            "clock"
+            "custom/separator#8"
+          ];
 
-        "custom/separator" = {
-          format = "|";
-          tooltip = false;
-        };
+          "hyprland/workspaces" = {
+            format = "{name}";
+            disable-scroll = true;
+            all-outputs = true;
+            on-click = "activate";
+          };
 
-        network = {
-          format-wifi = "Online";
-          format-ethernet = "Online";
-          format-disconnected = "Offline";
-          tooltip-format = "{ifname} via {gwaddr}";
-        };
+          "custom/separator" = {
+            format = "|";
+            tooltip = false;
+          };
 
-        battery = {
-          format = "BAT: {capacity}%";
-        };
+          network = {
+            format-wifi = "Online";
+            format-ethernet = "Online";
+            format-disconnected = "Offline";
+            tooltip-format = "{ifname} via {gwaddr}";
+          };
 
-        cpu = {
-          format = "CPU: {usage}%";
-          tooltip = false;
-        };
+          battery = {
+            format = "BAT: {capacity}%";
+          };
 
-        memory = {
-          format = "Mem: {used:0.1f}GiB";
-          tooltip = false;
-        };
+          cpu = {
+            format = "CPU: {usage}%";
+            tooltip = false;
+          };
 
-        disk = {
-          interval = 30;
-          format = "Disk: {used}";
-          path = "/";
-          tooltip = false;
-        };
+          memory = {
+            format = "Mem: {used:0.1f}GiB";
+            tooltip = false;
+          };
 
-        clock = {
-          format = "{:%H:%M}";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          disk = {
+            interval = 30;
+            format = "Disk: {used}";
+            path = "/";
+            tooltip = false;
+          };
+
+          clock = {
+            format = "{:%H:%M}";
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          };
         };
       };
+
+      style = ''
+        * {
+          border: none;
+          border-radius: 0;
+          /* Dynamically use Stylix fonts */
+          font-family: "${config.stylix.fonts.monospace.name}"; 
+          font-size: ${toString config.stylix.fonts.sizes.desktop}px;
+          min-height: 0;
+        }
+
+        window#waybar {
+          background-color: ${colors.base00}; 
+          color: ${colors.base05};
+        }
+
+        /* Hyprland Workspace Styling */
+        #workspaces button {
+          padding: 0 6px;
+          background: transparent;
+          color: ${colors.base05};
+          border-bottom: 2px solid transparent;
+        }
+
+        #workspaces button.active {
+          color: ${colors.base0C}; /* Cyan/Teal accent */
+          border-bottom: 2px solid ${colors.base0C}; 
+        }
+
+        #workspaces button:hover {
+          background: transparent;
+          box-shadow: inherit;
+          text-shadow: inherit;
+        }
+
+        /* Separator Styling */
+        #custom-separator {
+          color: ${colors.base03}; /* Muted grey/comment color */
+          padding: 0 8px;
+        }
+
+        /* Right Module Base Styling */
+        #network, #cpu, #memory, #disk, #clock, #battery, #tray {
+          padding: 0 4px;
+          margin: 0 2px;
+          border-bottom: 2px solid transparent;
+        }
+
+        /* Dynamic Stylix Base16 Module Colors */
+        #network {
+          color: ${colors.base0D}; /* Blue */
+          border-bottom-color: ${colors.base0D};
+        }
+
+        #cpu {
+          color: ${colors.base0B}; /* Green */
+          border-bottom-color: ${colors.base0B};
+        }
+
+        #memory {
+          color: ${colors.base0E}; /* Purple */
+          border-bottom-color: ${colors.base0E};
+        }
+
+        #disk {
+          color: ${colors.base0A}; /* Yellow */
+          border-bottom-color: ${colors.base0A};
+        }
+
+        #clock {
+          color: ${colors.base0C}; /* Cyan/Teal */
+          border-bottom-color: ${colors.base0C};
+        }
+
+        #battery {
+          color: ${colors.base0E};
+          border-bottom-color: ${colors.base0E};
+        }
+
+        #tray {
+          color: ${colors.base05}; /* Foreground */
+          border-bottom-color: ${colors.base04};
+        }
+      '';
     };
-
-    style = ''
-      * {
-        border: none;
-        border-radius: 0;
-        /* Dynamically use Stylix fonts */
-        font-family: "${config.stylix.fonts.monospace.name}"; 
-        font-size: ${toString config.stylix.fonts.sizes.desktop}px;
-        min-height: 0;
-      }
-
-      window#waybar {
-        background-color: ${colors.base00}; 
-        color: ${colors.base05};
-      }
-
-      /* Hyprland Workspace Styling */
-      #workspaces button {
-        padding: 0 6px;
-        background: transparent;
-        color: ${colors.base05};
-        border-bottom: 2px solid transparent;
-      }
-
-      #workspaces button.active {
-        color: ${colors.base0C}; /* Cyan/Teal accent */
-        border-bottom: 2px solid ${colors.base0C}; 
-      }
-
-      #workspaces button:hover {
-        background: transparent;
-        box-shadow: inherit;
-        text-shadow: inherit;
-      }
-
-      /* Separator Styling */
-      #custom-separator {
-        color: ${colors.base03}; /* Muted grey/comment color */
-        padding: 0 8px;
-      }
-
-      /* Right Module Base Styling */
-      #network, #cpu, #memory, #disk, #clock, #battery, #tray {
-        padding: 0 4px;
-        margin: 0 2px;
-        border-bottom: 2px solid transparent;
-      }
-
-      /* Dynamic Stylix Base16 Module Colors */
-      #network {
-        color: ${colors.base0D}; /* Blue */
-        border-bottom-color: ${colors.base0D};
-      }
-
-      #cpu {
-        color: ${colors.base0B}; /* Green */
-        border-bottom-color: ${colors.base0B};
-      }
-
-      #memory {
-        color: ${colors.base0E}; /* Purple */
-        border-bottom-color: ${colors.base0E};
-      }
-
-      #disk {
-        color: ${colors.base0A}; /* Yellow */
-        border-bottom-color: ${colors.base0A};
-      }
-
-      #clock {
-        color: ${colors.base0C}; /* Cyan/Teal */
-        border-bottom-color: ${colors.base0C};
-      }
-
-      #battery {
-        color: ${colors.base0E};
-        border-bottom-color: ${colors.base0E};
-      }
-
-      #tray {
-        color: ${colors.base05}; /* Foreground */
-        border-bottom-color: ${colors.base04};
-      }
-    '';
   };
 }
