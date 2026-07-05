@@ -4,6 +4,7 @@
     settings = {
       editor = {
         bufferline = "multiple";
+        cursorline = true;
         line-number = "relative";
         auto-format = true;
         color-modes = true;
@@ -12,8 +13,22 @@
           normal = "block";
           select = "underline";
         };
+        indent-guides = {
+          render = true;
+          character = "╎";
+          skip-levels = 1;
+        };
+      };
+      lsp = {
+        display-messages = true;
+        auto-signature-help = false;
+      };
+      inline-diagnostics = {
+        cursor-line = "warning";
+        other-lines = "error";
       };
     };
+
     languages = {
       language = [
         {
