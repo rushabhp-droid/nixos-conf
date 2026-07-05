@@ -10,9 +10,7 @@
       "libvirtd"
       "librepods"
     ];
-    packages = with pkgs; [
-      tree
-    ];
+    packages = with pkgs; [];
   };
 
   security.sudo = {

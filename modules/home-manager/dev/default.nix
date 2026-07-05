@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./helix.nix
-  ];
   home.packages = with pkgs; [
     nil
     nixfmt

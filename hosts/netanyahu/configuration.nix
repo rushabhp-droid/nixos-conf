@@ -11,18 +11,9 @@
 
     ./disk-config.nix
 
-    # NixOS System Modules
-    ../../modules/nixos
-
-    # Hardware-specific modules (per-host)
-    ../../modules/nixos/hardware/nvidia.nix
-    ../../modules/nixos/hardware/cardwire.nix
-    ../../modules/nixos/hardware/auto-cpufreq.nix
-    ../../modules/nixos/hardware/udev.nix
-
-    # Roles
-    ../../modules/nixos/roles/gaming.nix
-  ];
+    # Overlays
+    ../../overlays
+  ] ++ builtins.attrValues (import ../../modules/nixos);
 
   environment.systemPackages = with pkgs; [
     vim

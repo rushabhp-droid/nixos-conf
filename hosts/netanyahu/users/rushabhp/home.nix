@@ -7,7 +7,7 @@
     inherit stateVersion;
   };
 
-  imports = [ ../../../../modules/home-manager ];
+  imports = builtins.attrValues (import ../../../../modules/home-manager);
 
   programs.home-manager.enable = true;
 }

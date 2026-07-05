@@ -12,7 +12,7 @@ let
             in
             if type == "directory" then
               getPaths p
-            else if type == "regular" && name != "default.nix" && builtins.match ".*\\.nix$" name != null then
+            else if type == "regular" && builtins.match ".*\\.nix$" name != null && p != path + "/default.nix" then
               [ p ]
             else
               [ ]

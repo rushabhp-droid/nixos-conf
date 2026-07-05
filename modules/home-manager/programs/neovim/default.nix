@@ -3,9 +3,6 @@
   # Import all our sub-modules
   imports = [
     inputs.nixvim.homeModules.nixvim
-    ./plugins.nix
-    ./lsp.nix
-    ./keymaps.nix
   ];
 
   stylix.targets.nixvim.enable = true;
