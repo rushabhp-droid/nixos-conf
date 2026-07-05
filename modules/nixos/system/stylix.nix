@@ -1,7 +1,7 @@
 { pkgs, wallpaper, ... }: {
   stylix = {
     enable = true;
-
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
     image = wallpaper;
 
     polarity = "dark";

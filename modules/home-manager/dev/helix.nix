@@ -1,12 +1,29 @@
-_: {
-  stylix.targets.helix.enable = false;
-  helix = {
+{ config, ... }: {
+  programs.helix = {
     enable = true;
     settings = {
-      theme = "ayu_dark";
       editor = {
+        bufferline = "multiple";
         line-number = "relative";
+        auto-format = true;
+        color-modes = true;
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
       };
+    };
+    languages = {
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter = {
+            command = "nixfmt";
+          };
+        }
+      ];
     };
   };
 }
