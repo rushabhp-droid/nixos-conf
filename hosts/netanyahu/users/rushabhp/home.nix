@@ -41,6 +41,7 @@
     };
     dev = {
       helix.enable = true;
+      zellij.enable = true;
       dev.enable = true;
     };
   };
