@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.hostModules.hardware.auto_cpufreq.enable = lib.mkEnableOption "auto_cpufreq";
   config = lib.mkIf config.hostModules.hardware.auto_cpufreq.enable {
 

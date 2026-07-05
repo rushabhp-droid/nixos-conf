@@ -21,14 +21,14 @@
             character = "╎";
             skip-levels = 1;
           };
-        };
-        lsp = {
-          display-messages = true;
-          auto-signature-help = false;
-        };
-        inline-diagnostics = {
-          cursor-line = "warning";
-          other-lines = "error";
+          lsp = {
+            display-messages = true;
+            auto-signature-help = false;
+          };
+          inline-diagnostics = {
+            cursor-line = "warning";
+            other-lines = "error";
+          };
         };
       };
 

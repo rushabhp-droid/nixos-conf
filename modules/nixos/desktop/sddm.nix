@@ -8,9 +8,7 @@
   options.hostModules.desktop.sddm.enable = lib.mkEnableOption "sddm";
   config = lib.mkIf config.hostModules.desktop.sddm.enable {
 
-    environment.systemPackages = with pkgs; [
-      where-is-my-sddm-theme
-    ];
+    environment.systemPackages = with pkgs; [ where-is-my-sddm-theme ];
 
     services.displayManager.sddm = {
       enable = true;

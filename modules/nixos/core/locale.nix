@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.hostModules.core.locale.enable = lib.mkEnableOption "locale";
   config = lib.mkIf config.hostModules.core.locale.enable {
 

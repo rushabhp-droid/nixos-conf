@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.homeModules.desktop.hyprland.enable = lib.mkEnableOption "hyprland";
   config = lib.mkIf config.homeModules.desktop.hyprland.enable {
 

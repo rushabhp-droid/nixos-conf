@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.hostModules.services.virtualization.enable = lib.mkEnableOption "virtualization";
   config = lib.mkIf config.hostModules.services.virtualization.enable {
 

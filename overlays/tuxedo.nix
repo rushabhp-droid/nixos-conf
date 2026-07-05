@@ -1,3 +1,1 @@
-_final: prev: {
-  tuxedo = prev.callPackage ../pkgs/tuxedo.nix { };
-}
+_final: prev: { tuxedo = prev.callPackage ../pkgs/tuxedo.nix { }; }

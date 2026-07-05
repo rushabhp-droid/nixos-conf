@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.hostModules.hardware.cardwire.enable = lib.mkEnableOption "cardwire";
   config = lib.mkIf config.hostModules.hardware.cardwire.enable {
 

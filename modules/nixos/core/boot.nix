@@ -14,9 +14,7 @@
         efi.canTouchEfiVariables = true;
       };
       kernelPackages = pkgs.linuxPackages_latest;
-      kernelParams = [
-        "splash"
-      ];
+      kernelParams = [ "splash" ];
     };
 
     services.fstrim.enable = true;

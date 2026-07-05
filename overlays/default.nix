@@ -1,5 +1,4 @@
-_:
-{
+_: {
   nixpkgs.overlays = [
     (import ./tuxedo.nix)
     (import ./librepods.nix)

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  stateVersion,
-  ...
-}:
+{ pkgs, stateVersion, ... }:
 
 {
   imports = [

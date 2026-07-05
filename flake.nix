@@ -71,7 +71,12 @@
       treefmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.x86_64-linux {
         projectRootFile = "flake.nix";
         programs = {
-          nixfmt.enable = true;
+          nixfmt = {
+            enable = true;
+            strict = true;
+          };
+          shellcheck.enable = true;
+          prettier.enable = true;
           stylua.enable = true;
           deadnix.enable = true;
           statix.enable = true;
@@ -121,9 +126,7 @@
                     ;
                 };
                 users.${userName} = {
-                  imports = [
-                    ./hosts/${hostname}/users/${userName}/home.nix
-                  ];
+                  imports = [ ./hosts/${hostname}/users/${userName}/home.nix ];
                 };
               };
             }

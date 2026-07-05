@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.homeModules.desktop.hypridle.enable = lib.mkEnableOption "hypridle";
   config = lib.mkIf config.homeModules.desktop.hypridle.enable {
 

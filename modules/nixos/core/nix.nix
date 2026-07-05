@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.hostModules.core.nix.enable = lib.mkEnableOption "nix";
   config = lib.mkIf config.hostModules.core.nix.enable {
 

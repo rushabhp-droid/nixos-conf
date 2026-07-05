@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.homeModules.desktop.hyprpaper.enable = lib.mkEnableOption "hyprpaper";
   config = lib.mkIf config.homeModules.desktop.hyprpaper.enable {
 

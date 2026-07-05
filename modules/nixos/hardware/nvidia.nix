@@ -8,9 +8,7 @@
   options.hostModules.hardware.nvidia.enable = lib.mkEnableOption "nvidia";
   config = lib.mkIf config.hostModules.hardware.nvidia.enable {
 
-    environment.systemPackages = with pkgs; [
-      nvidia-vaapi-driver
-    ];
+    environment.systemPackages = with pkgs; [ nvidia-vaapi-driver ];
 
     services.xserver.videoDrivers = [ "nvidia" ];
     boot.blacklistedKernelModules = [ "nouveau" ];
@@ -19,9 +17,7 @@
       graphics = {
         enable = true;
         enable32Bit = true;
-        extraPackages = with pkgs; [
-          intel-media-driver
-        ];
+        extraPackages = with pkgs; [ intel-media-driver ];
       };
 
       nvidia = {

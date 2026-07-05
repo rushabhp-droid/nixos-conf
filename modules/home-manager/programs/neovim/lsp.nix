@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   config = lib.mkIf config.homeModules.programs.neovim.enable {
 
     programs.nixvim = {

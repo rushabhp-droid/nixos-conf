@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.hostModules.hardware.udev.enable = lib.mkEnableOption "udev";
   config = lib.mkIf config.hostModules.hardware.udev.enable {
 

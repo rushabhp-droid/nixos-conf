@@ -1,7 +1,5 @@
 {
   "workspace": {
-    "library": [
-      "./stubs/"
-    ]
+    "library": ["./stubs/"]
   }
 }

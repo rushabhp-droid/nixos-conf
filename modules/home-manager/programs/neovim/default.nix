@@ -7,18 +7,14 @@
 }:
 {
   options.homeModules.programs.neovim.enable = lib.mkEnableOption "neovim";
-  imports = [
-    inputs.nixvim.homeModules.nixvim
-  ];
+  imports = [ inputs.nixvim.homeModules.nixvim ];
   config = lib.mkIf config.homeModules.programs.neovim.enable {
 
     # Import all our sub-modules
 
     stylix.targets.nixvim.enable = true;
 
-    home.packages = with pkgs; [
-      ripgrep
-    ];
+    home.packages = with pkgs; [ ripgrep ];
 
     programs.nixvim = {
       enable = true;

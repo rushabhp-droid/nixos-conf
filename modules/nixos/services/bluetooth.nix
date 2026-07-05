@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.hostModules.services.bluetooth.enable = lib.mkEnableOption "bluetooth";
   config = lib.mkIf config.hostModules.services.bluetooth.enable {
 

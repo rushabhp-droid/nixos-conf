@@ -8,9 +8,7 @@
   options.hostModules.core.sound.enable = lib.mkEnableOption "sound";
   config = lib.mkIf config.hostModules.core.sound.enable {
 
-    environment.systemPackages = with pkgs; [
-      helvum
-    ];
+    environment.systemPackages = with pkgs; [ helvum ];
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;

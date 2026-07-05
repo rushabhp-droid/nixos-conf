@@ -10,9 +10,7 @@ let
 in
 {
   options.homeModules.programs.zen.enable = lib.mkEnableOption "zen";
-  imports = [
-    inputs.zen-browser.homeModules.twilight
-  ];
+  imports = [ inputs.zen-browser.homeModules.twilight ];
   config = lib.mkIf config.homeModules.programs.zen.enable {
 
     stylix.targets.zen-browser.profileNames = [ "default" ];

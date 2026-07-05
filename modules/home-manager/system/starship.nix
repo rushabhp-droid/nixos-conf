@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.homeModules.system.starship.enable = lib.mkEnableOption "starship";
   config = lib.mkIf config.homeModules.system.starship.enable {
 
