@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./helix.nix
+  ];
   home.packages = with pkgs; [
     nil
     nixfmt
@@ -113,15 +116,6 @@
     lazygit = {
       enable = true;
       enableBashIntegration = true;
-    };
-
-    helix = {
-      enable = true;
-      settings = {
-        editor = {
-          line-number = "relative";
-        };
-      };
     };
   };
 }
