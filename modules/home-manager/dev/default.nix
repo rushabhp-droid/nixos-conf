@@ -12,7 +12,6 @@
       nixd
       nixfmt
       fzf
-      gram
     ];
 
     programs = {
