@@ -1,4 +1,12 @@
-{ lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  userName,
+  hostname,
+  ...
+}:
+{
   options.homeModules.dev.helix.enable = lib.mkEnableOption "helix";
   config = lib.mkIf config.homeModules.dev.helix.enable {
 
@@ -42,6 +50,25 @@
             };
           }
         ];
+        language-server = {
+          nixd = {
+            command = "${pkgs.nixd}/bin/nixd";
+            args = [ "--semantic-tokens=true" ];
+            config.nixd =
+              let
+                flakeDir = "(builtins.getFlake (toString /home/${userName}/nixos-conf))";
+                nixosOpts = "${flakeDir}.nixosConfigurations.${hostname}.options";
+              in
+              {
+                nixpkgs.expr = "import ${flakeDir}.inputs.nixpkgs {}";
+                formatting.command = [ "nixfmt" ];
+                options = {
+                  nixos.expr = nixosOpts;
+                  home-manager.expr = "${nixosOpts}.home-manager.users.type.getSubOptions []";
+                };
+              };
+          };
+        };
       };
     };
   };
