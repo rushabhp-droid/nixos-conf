@@ -9,9 +9,10 @@
   config = lib.mkIf config.homeModules.dev.dev.enable {
 
     home.packages = with pkgs; [
-      nil
+      nixd
       nixfmt
       fzf
+      gram
     ];
 
     programs = {
