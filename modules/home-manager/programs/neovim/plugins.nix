@@ -28,7 +28,9 @@
         };
 
         treesitter-context.enable = true;
-        lualine.enable = true;
+        bufferline = {
+          enable = true;
+        };
         which-key.enable = true;
         neo-tree.enable = true;
         comment.enable = true;
