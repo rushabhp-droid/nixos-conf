@@ -130,11 +130,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783119666,
-        "narHash": "sha256-cv/Uw3IFyXTjwMWgTXwtsVhDhPFmeO62OCG8l7oYAMM=",
+        "lastModified": 1783333442,
+        "narHash": "sha256-Py02ysxANY3z4//EnKBSjiVN0EVEMVou+BBnfjVkf3o=",
         "owner": "opengamingcollective",
         "repo": "cardwire",
-        "rev": "e891207d9f3540022116264dc44301a94ed11d5f",
+        "rev": "0dff937cfe89cb33821933218f04a1774a578a68",
         "type": "github"
       },
       "original": {
