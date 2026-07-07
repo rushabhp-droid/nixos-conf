@@ -23,8 +23,8 @@
       };
 
       opacity = {
-        terminal = 0.85;
-        popups = 0.85;
+        terminal = 0.65;
+        popups = 0.65;
       };
 
       fonts = {

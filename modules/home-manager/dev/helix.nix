@@ -12,6 +12,7 @@
 
     programs.helix = {
       enable = true;
+      package = pkgs.evil-helix;
       settings = {
         editor = {
           bufferline = "multiple";

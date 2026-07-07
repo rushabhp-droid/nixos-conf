@@ -23,6 +23,7 @@
               "bash"
               "markdown"
               "markdown_inline"
+              "qmlls"
             ];
           };
         };
