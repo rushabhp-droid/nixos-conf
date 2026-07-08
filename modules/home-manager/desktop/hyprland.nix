@@ -2,6 +2,8 @@
   options.homeModules.desktop.hyprland.enable = lib.mkEnableOption "hyprland";
   config = lib.mkIf config.homeModules.desktop.hyprland.enable {
 
+    gtk.enable = true;
+
     services.cliphist = {
       enable = true;
       allowImages = true;
