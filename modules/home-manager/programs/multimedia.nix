@@ -9,6 +9,8 @@
   config = lib.mkIf config.homeModules.programs.multimedia.enable {
 
     home.packages = with pkgs; [
+      varia
+      qbittorrent
       amberol
       stremio-linux-shell
       shortwave
