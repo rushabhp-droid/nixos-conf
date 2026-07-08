@@ -10,7 +10,7 @@
 
     home.packages = with pkgs; [
       amberol
-      losange
+      stremio-linux-shell
       shortwave
       loupe # image viewer
       clapper # Media Player
