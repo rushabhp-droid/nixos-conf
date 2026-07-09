@@ -3,6 +3,7 @@
   config = lib.mkIf config.homeModules.desktop.hyprland.enable {
 
     gtk.enable = true;
+    home.pointerCursor.enable = true;
 
     services.cliphist = {
       enable = true;
